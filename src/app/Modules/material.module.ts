@@ -6,6 +6,7 @@ import {MatButtonModule, MatCheckboxModule, MatIconModule, MatListModule, MatSid
 import { CovalentLayoutModule } from '@covalent/core/layout';
 import { CovalentStepsModule  } from '@covalent/core/steps';
 import { CovalentChipsModule } from '@covalent/core/chips';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CovalentChipsModule } from '@covalent/core/chips';
     MatListModule,
     CovalentStepsModule,
     CovalentChipsModule,
-    CovalentLayoutModule
+    CovalentLayoutModule,
+    HttpClientModule
   ],
   declarations: [],
   exports: [

@@ -7,12 +7,15 @@ import { AppComponent } from './app.component';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
 
-import {MaterialModule} from './Material/material.module';
+import {MaterialModule} from './Modules/material.module';
+import {ApiModule} from './Modules/api.module';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { NowplayingComponent } from './Movies/nowplaying/nowplaying.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NowplayingComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
     NoopAnimationsModule,
     AppRoutingModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    ApiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
