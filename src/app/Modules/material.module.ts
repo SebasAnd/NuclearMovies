@@ -7,6 +7,8 @@ import { CovalentLayoutModule } from '@covalent/core/layout';
 import { CovalentStepsModule  } from '@covalent/core/steps';
 import { CovalentChipsModule } from '@covalent/core/chips';
 import {HttpClientModule} from '@angular/common/http';
+import {CovalentExpansionPanelModule} from '@covalent/core';
+import {MatToolbarModule} from '@angular/material';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {HttpClientModule} from '@angular/common/http';
     CovalentStepsModule,
     CovalentChipsModule,
     CovalentLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    CovalentExpansionPanelModule,
+    MatToolbarModule
   ],
   declarations: [],
   exports: [
@@ -30,7 +34,9 @@ import {HttpClientModule} from '@angular/common/http';
     MatListModule,
     CovalentStepsModule,
     CovalentChipsModule,
-    CovalentLayoutModule
+    CovalentLayoutModule,
+    CovalentExpansionPanelModule,
+    MatToolbarModule
   ]
 })
 export class MaterialModule { }

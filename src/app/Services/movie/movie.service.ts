@@ -10,13 +10,21 @@ export class MovieService {
   private items$ = new Observable();
 
   private apiKey = '8230c7ea8cb40f6fd40f8851a920b7bf';
-  moviesURL = this.theMovieDbUrl + 'movie/now_playing' + '?api_key=' + this.apiKey;
+  private moviesURL: string;
 
   constructor(private http: HttpClient) {
 
   }
 
-  getConfig() {
+  getjson(required: string, page?: number ) {
+    if (page != null) {
+
+      this.moviesURL = this.theMovieDbUrl + required + '?api_key=' + this.apiKey + '&page=' + page;
+    }
+    else {
+
+      this.moviesURL = this.theMovieDbUrl + required + '?api_key=' + this.apiKey;
+    }
     return this.http.get(this.moviesURL);
 }
 

@@ -10,12 +10,13 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from './Modules/material.module';
 import {ApiModule} from './Modules/api.module';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { NowplayingComponent } from './Movies/nowplaying/nowplaying.component';
+
+
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NowplayingComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

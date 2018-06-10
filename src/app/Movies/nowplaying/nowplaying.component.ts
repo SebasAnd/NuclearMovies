@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MovieService} from '../../Services/movie.service';
+import {MovieService} from '../../Services/movie/movie.service';
 import {observable, Observable} from 'rxjs';
 
 @Component({
@@ -15,7 +15,7 @@ export class NowplayingComponent implements OnInit {
   }
 
   showConfig() {
-    this.movie_list = this.movieService.getConfig().subscribe((data: any) => this.items = {
+    this.movie_list = this.movieService.getjson('movie/now_playing', ).subscribe((data: any) => this.items = {
       data: data
     });
   }

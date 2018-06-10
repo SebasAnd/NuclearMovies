@@ -19,22 +19,49 @@
 </ul>
 <button mat-raised-button color="primary">Primary</button>--->
 <td-layout>
-  <td-navigation-drawer flex sidenavTitle="Covalent" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+  <td-navigation-drawer flex sidenavTitle="Nuclear Movies" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
     <mat-nav-list>
       <a mat-list-item><mat-icon>home</mat-icon>Home</a>
-      <a routerLink="/home" mat-list-item><mat-icon>home</mat-icon>Home</a>
+      <p _ngcontent-c0="">Movies</p>
+      <a routerLink="/now_playing_movies" mat-list-item><mat-icon>home</mat-icon>Now Playing</a>
+      <a routerLink="/popular_movies" mat-list-item><mat-icon>home</mat-icon>Popular</a>
+      <a routerLink="/top_rated_movies" mat-list-item><mat-icon>home</mat-icon>Top Rated</a>
+      <a routerLink="/upcoming_movies" mat-list-item><mat-icon>home</mat-icon>Upcoming</a>
+      <p _ngcontent-c0="">People</p>
+      <a routerLink="/popular_people" mat-list-item><mat-icon>home</mat-icon>Popular</a>
+      <p _ngcontent-c0="">Tv Shows</p>
+      <a routerLink="/tv_shows_on_air" mat-list-item><mat-icon>home</mat-icon>On Air</a>
+      <a routerLink="/popular_tv_shows" mat-list-item><mat-icon>home</mat-icon>Popular</a>
+      <a routerLink="/top_rated_tv_shows" mat-list-item><mat-icon>home</mat-icon>Top Rated</a>
+
+
     </mat-nav-list>
+
+
     <div td-navigation-drawer-menu>
       <mat-nav-list>
         <a mat-list-item><mat-icon>account_box</mat-icon>Profile</a>
       </mat-nav-list>
     </div>
   </td-navigation-drawer>
-  <td-layout-nav logo="" toolbarTitle="Covalent" navigationRoute="/">
+  <mat-toolbar mat-primary class="mat-toolbar mat-primary" logo="" toolbarTitle="Nuclear Movies" navigationRoute="/">
     <button mat-icon-button td-menu-button tdLayoutToggle>
       <mat-icon>menu</mat-icon>
     </button>
-
+    Nuclear Movies
+  </mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-button>Home</button>
+    <button mat-button routerLink="/now_playing_movies">Now Playing</button>
+    <button mat-button routerLink="/popular_movies">Popular</button>
+    <button mat-button routerLink="/top_rated_movies" mat-list-item>Top Rated</button>
+    <button mat-button routerLink="/upcoming_movies" mat-list-item>Upcoming</button>
+    <button mat-button routerLink="/popular_people" mat-list-item>People</button>
+    <button mat-button routerLink="/tv_shows_on_air" mat-list-item>Tv Shows On Air</button>
+    <button mat-button routerLink="/popular_tv_shows" mat-list-item>Popular On Tv</button>
+    <button mat-button routerLink="/top_rated_tv_shows" mat-list-item>Top Rated Tv shows</button>
+  </mat-toolbar-row>
     <router-outlet></router-outlet>
-  </td-layout-nav>
+
+
 </td-layout>
