@@ -18,6 +18,13 @@ export class PopularpeopleComponent implements OnInit {
       data: data
     });
   }
+  change_page($event) {
+    $event.pageIndex = $event.pageIndex + 1;
+    console.log($event);
+    this.people_list = this.movieService.getjson('person/popular', $event.pageIndex).subscribe((data: any) => this.items = {
+      data: data
+    });
+  }
 
   ngOnInit() {
     this.showConfig();

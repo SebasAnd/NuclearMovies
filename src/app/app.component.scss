@@ -9,9 +9,22 @@ p {
 mat-toolbar.mat-primary {
   background: black;
   color: lightgreen;
+  height: 80px;
 }
 mat-toolbar-row{
   background: lightgreen;
   color: black;
 }
 
+h1{
+  font-size: 40px;
+}
+mat-icon{
+  height: 1000px;
+  size: 1000px;
+}
+button.mat-button{
+
+  font-size: 17px;
+}
+.material-icons.md-24 { font-size: 40px; }

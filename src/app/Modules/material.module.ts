@@ -11,6 +11,7 @@ import {CovalentExpansionPanelModule} from '@covalent/core';
 import {MatToolbarModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material';
+import {MatPaginatorModule} from '@angular/material';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {MatCardModule} from '@angular/material';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatPaginatorModule
 
   ],
   declarations: [],
@@ -47,7 +49,8 @@ import {MatCardModule} from '@angular/material';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatPaginatorModule
 
   ]
 })

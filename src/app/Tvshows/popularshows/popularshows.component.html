@@ -1,4 +1,36 @@
 <div *ngIf="items">
   <!---<button mat-button (click)="showConfig()">boton</button>--->
-  {{items.data.results | json}}
+  <!---{{items.data.results | json}}--->
+  <h1>Popular Tv Shows</h1>
+
+  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="785px">
+    <mat-grid-tile *ngFor="let i of items.data.results"   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
+    ><figure class="mat-figure">
+      <mat-card  class="movie mat-card">
+        <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
+        <ng-template #trueA>
+          <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png">
+        </ng-template>
+        <ng-template #falseA>
+          <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}">
+        </ng-template>
+
+
+      </mat-card>
+      <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.name}}</mat-grid-tile-footer>
+    </figure></mat-grid-tile>
+  </mat-grid-list>
+  <!---{{items.data | json}}
+    {{items.data.total_results}}--->
+
+
+  <mat-paginator [length]="items.data.total_results"
+                 [pageSize]="items.data.results.length"
+                 [pageSizeOptions]=""
+                 [pageIndex]="0"
+                 (page)= "change_page($event)">
+
+  </mat-paginator>
+
 </div>
+
