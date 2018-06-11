@@ -9,6 +9,8 @@ import { CovalentChipsModule } from '@covalent/core/chips';
 import {HttpClientModule} from '@angular/common/http';
 import {CovalentExpansionPanelModule} from '@covalent/core';
 import {MatToolbarModule} from '@angular/material';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material';
 
 
 @NgModule({
@@ -23,7 +25,12 @@ import {MatToolbarModule} from '@angular/material';
     CovalentLayoutModule,
     HttpClientModule,
     CovalentExpansionPanelModule,
-    MatToolbarModule
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatCardModule,
+    MatGridListModule
+
   ],
   declarations: [],
   exports: [
@@ -36,7 +43,12 @@ import {MatToolbarModule} from '@angular/material';
     CovalentChipsModule,
     CovalentLayoutModule,
     CovalentExpansionPanelModule,
-    MatToolbarModule
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatCardModule,
+    MatGridListModule
+
   ]
 })
 export class MaterialModule { }

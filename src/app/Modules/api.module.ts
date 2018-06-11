@@ -8,10 +8,13 @@ import { PopularpeopleComponent} from '../People/popularpeople/popularpeople.com
 import { ShowsonairComponent } from '../Tvshows/showsonair/showsonair.component';
 import {PopularshowsComponent} from '../Tvshows/popularshows/popularshows.component';
 import {TopratedshowsComponent} from '../Tvshows/topratedshows/topratedshows.component';
+import {MaterialModule} from './material.module';
 
 @NgModule({
   imports: [
-    CommonModule,  ],
+    CommonModule,
+   MaterialModule
+  ],
   declarations: [
     NowplayingComponent,
     PopularmoviesComponent,
