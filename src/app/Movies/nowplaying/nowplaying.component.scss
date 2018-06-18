@@ -1,0 +1,29 @@
+div.overview_vision{
+
+  size : 40vw;
+  background-color: gray;
+}
+div.class-especial{
+
+  position:relative;
+
+}
+.top-left {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: white;
+  height: 785px;
+  width: 460px;
+  background-color: gray;
+  text-align: justify;
+  opacity: 0.9;
+  max-font-size: 2px;
+}
+mat-paginator{
+  background-color: black;
+  color: lightgreen;
+  font-size: 18px;
+}
+

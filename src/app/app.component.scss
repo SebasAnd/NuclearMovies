@@ -7,14 +7,13 @@ p {
 }
 
 mat-toolbar.mat-primary {
+
   background: black;
   color: lightgreen;
   height: 80px;
+  position: fixed;
 }
-mat-toolbar-row{
-  background: lightgreen;
-  color: black;
-}
+
 
 h1{
   font-size: 40px;
@@ -23,8 +22,53 @@ mat-icon{
   height: 1000px;
   size: 1000px;
 }
-button.mat-button{
 
-  font-size: 17px;
+p{
+  background: black;
+  color: lightgreen;
+  font-size: 18px;
 }
+a.mat-list-item{
+
+  background: black;
+  color: lightgreen;
+  font-size: 18px;
+}
+button.mat-button{
+  background: black;
+  color: lightgreen;
+  font-size: 18px;
+}
+td-layout.td-navigation-drawer{
+  background: black;
+
+}
+mat-nav-list{
+  background: black;
+  color: lightgreen;
+}
+div.td-navigation-drawer-menu{
+  background: black;
+  color: lightgreen;
+  position:absolute;
+
+}
+input{
+
+  background-color: black;
+  color: lightgreen;
+  border-color: lightgreen;
+  position: absolute;
+  right: 6vw;
+  font-size: 18px;
+}
+a.search-button{
+  position: absolute;
+  right: 1.7vw;
+  background: black;
+  color: lightgreen;
+  font-size: 18px;
+}
+
 .material-icons.md-24 { font-size: 40px; }
+.material-icons.md-25 { font-size: 30px; }

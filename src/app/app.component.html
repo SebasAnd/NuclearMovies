@@ -18,10 +18,13 @@
   </li>
 </ul>
 <button mat-raised-button color="primary">Primary</button>--->
-<td-layout>
-  <td-navigation-drawer flex sidenavTitle="Nuclear Movies" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+
+<td-layout style="background-color: orange;">
+
+  <td-navigation-drawer  style="background-color: black;" >
+    <p>Nuclear Movies</p>
     <mat-nav-list>
-      <a mat-list-item><mat-icon>home</mat-icon>Home</a>
+      <a mat-list-item ><mat-icon>home</mat-icon>Home</a>
       <p _ngcontent-c0="">Movies</p>
       <a routerLink="/now_playing_movies" mat-list-item><mat-icon>home</mat-icon>Now Playing</a>
       <a routerLink="/popular_movies" mat-list-item><mat-icon>home</mat-icon>Popular</a>
@@ -34,23 +37,15 @@
       <a routerLink="/popular_tv_shows" mat-list-item><mat-icon>home</mat-icon>Popular</a>
       <a routerLink="/top_rated_tv_shows" mat-list-item><mat-icon>home</mat-icon>Top Rated</a>
 
-
     </mat-nav-list>
 
-
-    <div td-navigation-drawer-menu>
-      <mat-nav-list>
-        <a mat-list-item><mat-icon>account_box</mat-icon>Profile</a>
-      </mat-nav-list>
-    </div>
   </td-navigation-drawer>
   <mat-toolbar mat-primary class="mat-toolbar mat-primary" logo="" toolbarTitle="Nuclear Movies" navigationRoute="/">
     <button mat-icon-button td-menu-button tdLayoutToggle>
-      <mat-icon >menu</mat-icon>
+      <mat-icon class="material-icons md-25" >menu</mat-icon>
     </button>
    <mat-icon class="material-icons md-24">warning</mat-icon><h1>Nuclear Movies</h1>
-  </mat-toolbar>
-  <mat-toolbar-row>
+
     <button mat-button>Home</button>
     <button mat-button routerLink="/now_playing_movies">Now Playing</button>
     <button mat-button routerLink="/popular_movies">Popular</button>
@@ -60,8 +55,14 @@
     <button mat-button routerLink="/tv_shows_on_air" mat-list-item>Tv Shows On Air</button>
     <button mat-button routerLink="/popular_tv_shows" mat-list-item>Popular On Tv</button>
     <button mat-button routerLink="/top_rated_tv_shows" mat-list-item>Top Rated Tv shows</button>
+    <input type="text" [(ngModel)]="word"><a [routerLink]="['/search', word]"  class="search-button" mat-button ><mat-icon>search</mat-icon></a>
+  </mat-toolbar>
+
+  <mat-toolbar-row>
+
   </mat-toolbar-row>
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 
 
 </td-layout>
+

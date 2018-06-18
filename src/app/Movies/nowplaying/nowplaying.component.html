@@ -1,28 +1,52 @@
 
-<div *ngIf="items">
+<div *ngIf="items" >
 <!---<button mat-button (click)="showConfig()">boton</button>--->
-<!---{{items.data.results | json}}--->
+<!---{{items.data.results | json}} <div class="personalized_div" (mouseover)="" >{{overview}}  --->
   <h1>Now Playing Movies</h1>
+  <div >
+  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="700px" >
+        <mat-grid-tile *ngFor="let i of items.data.results;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
+        >
 
-  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="785px">
-        <mat-grid-tile *ngFor="let i of items.data.results"   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
-        ><figure class="mat-figure">
-        <mat-card  class="movie mat-card">
+          <figure class="mat-figure" >
+          <mat-card  class="movie mat-card">
+
+            <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
+            <ng-template #trueB>
+              <div *ngIf = 'i.poster_path === null; then trueC else falseC'></div>
+
+
+              <ng-template #trueC>
+                <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png"   >
+              </ng-template>
+              <ng-template #falseC>
+              <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}"  >
+              </ng-template>
+
+              <a [routerLink]="['/movie_details',i.id]"><div class="top-left"  (mouseout)="mouseout()"><p>{{i.title}}</p> {{i.overview}} </div></a>
+            </ng-template>
+            <ng-template #falseB>
+
           <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
-          <ng-template #trueA>
-            <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png">
+
+            <ng-template #trueA>
+            <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
           </ng-template>
           <ng-template #falseA>
-            <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}">
+            <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
           </ng-template>
-
+            </ng-template>
 
         </mat-card>
-        <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.title}}</mat-grid-tile-footer>
-      </figure></mat-grid-tile>
+
+
+          <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.title}}</mat-grid-tile-footer>
+
+          </figure></mat-grid-tile>
   </mat-grid-list>
-<!---{{items.data | json}}
-  {{items.data.total_results}}--->
+  </div>
+  <!---{{items.data | json}}
+     {{items.data.total_results}}--->
 
 
   <mat-paginator [length]="items.data.total_results"

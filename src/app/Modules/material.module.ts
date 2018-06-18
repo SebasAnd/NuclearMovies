@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatPaginatorModule} from '@angular/material';
     NoopAnimationsModule,
     MatCardModule,
     MatGridListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule
 
   ],
   declarations: [],
@@ -50,7 +52,8 @@ import {MatPaginatorModule} from '@angular/material';
     NoopAnimationsModule,
     MatCardModule,
     MatGridListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule
 
   ]
 })

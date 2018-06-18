@@ -8,6 +8,10 @@ import {PopularpeopleComponent} from './People/popularpeople/popularpeople.compo
 import {ShowsonairComponent} from './Tvshows/showsonair/showsonair.component';
 import {PopularshowsComponent} from './Tvshows/popularshows/popularshows.component';
 import {TopratedshowsComponent} from './Tvshows/topratedshows/topratedshows.component';
+import {MoviedetailsComponent} from './Movies/moviedetails/moviedetails.component';
+import {PeopledetailsComponent} from './People/peopledetails/peopledetails.component';
+import {TvshowsdetailsComponent} from './Tvshows/tvshowsdetails/tvshowsdetails.component';
+import {GeneralrearchComponent} from './General/generalrearch/generalrearch.component';
 
 const routes: Routes = [
   {path: 'now_playing_movies', component: NowplayingComponent},
@@ -17,7 +21,12 @@ const routes: Routes = [
   {path: 'popular_people', component: PopularpeopleComponent},
   {path: 'tv_shows_on_air', component: ShowsonairComponent},
   {path: 'popular_tv_shows', component: PopularshowsComponent},
-  {path: 'top_rated_tv_shows', component: TopratedshowsComponent}
+  {path: 'top_rated_tv_shows', component: TopratedshowsComponent},
+  {path: 'movie_details/:id', component: MoviedetailsComponent},
+  {path: 'people_details/:id', component: PeopledetailsComponent},
+  {path: 'tvshow_details/:id', component: TvshowsdetailsComponent},
+  {path: 'search/:word', component: GeneralrearchComponent}
+
 ];
 
 @NgModule({
