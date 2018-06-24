@@ -8,6 +8,24 @@ div.class-especial{
   position:relative;
 
 }
+.vote-list{
+  text-align: justify;
+  -moz-text-align-last: justify;
+  text-align-last: justify;
+  border: 20px gray double;
+
+}
+
+.star_rate{
+
+  color: yellow;
+  font-size: 30px;
+}
+
+.title{
+
+  font-size: 25px;
+}
 .top-left {
   display: inline-block;
   position: absolute;
@@ -15,15 +33,22 @@ div.class-especial{
   left: 0px;
   color: white;
   height: 785px;
-  width: 460px;
+  width: 440px;
   background-color: gray;
-  text-align: justify;
   opacity: 0.9;
   max-font-size: 2px;
+
+  text-align: justify;
+  -moz-text-align-last: center;
+  text-align-last: center;
+  border: 20px gray double;
 }
 mat-paginator{
   background-color: black;
   color: lightgreen;
   font-size: 18px;
 }
+.icon-title{
 
+  font-size:30px;
+}

@@ -41,4 +41,18 @@ export class MovieService {
     return this.http.get(this.moviesURL);
   }
 
+ /* related_movies(required: string, page?: number) {
+    if (page != null) {
+
+      this.moviesURL = this.theMovieDbUrl + required + '?api_key=' + this.apiKey + '&page=' + page
+        + '&append_to_response=videos,credits,images,recommendations,similar,reviews';
+    }
+    else {
+
+      this.moviesURL = this.theMovieDbUrl + required + '?api_key=' + this.apiKey
+        + '&append_to_response=videos,credits,images,recommendations,similar,reviews,external_ids';
+    }
+    return this.http.get(this.moviesURL);
+  }*/
+
 }

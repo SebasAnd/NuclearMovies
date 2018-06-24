@@ -1,0 +1,40 @@
+.example-form {
+
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  position: absolute;
+  top:0vw;
+  right: -10vw;
+  font-size: 18px;
+}
+
+mat-option{
+
+  background-color: black;
+  color:lightgreen;
+}
+.example-full-width {
+  width: 100%;
+  position: absolute;
+
+}
+
+input{
+
+  background-color: black;
+  color: lightgreen;
+  border-color: lightgreen;
+  position: absolute;
+  top:1.2vw;
+  right: 6vw;
+  font-size: 18px;
+}
+a.search-button{
+  position: absolute;
+  top:0.9vw;
+  right: 1.7vw;
+  background: black;
+  color: lightgreen;
+  font-size: 18px;
+}

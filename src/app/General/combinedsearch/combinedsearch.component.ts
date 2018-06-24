@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-combinedsearch',
   templateUrl: './combinedsearch.component.html',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CombinedsearchComponent implements OnInit {
 
-  constructor() { }
-
+   word;
+  constructor(){}
   ngOnInit() {
   }
+
 
 }

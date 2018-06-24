@@ -15,14 +15,15 @@ import {PeopledetailsComponent} from '../People/peopledetails/peopledetails.comp
 import {TvshowsdetailsComponent} from '../Tvshows/tvshowsdetails/tvshowsdetails.component';
 import {CombinedsearchComponent} from '../General/combinedsearch/combinedsearch.component';
 import {GeneralrearchComponent} from '../General/generalrearch/generalrearch.component';
-import {Form, FormsModule} from '@angular/forms';
+import {Form, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
    MaterialModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     NowplayingComponent,
@@ -53,7 +54,8 @@ import {Form, FormsModule} from '@angular/forms';
     TvshowsdetailsComponent,
     GeneralrearchComponent,
     CombinedsearchComponent,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ApiModule { }

@@ -13,6 +13,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material';
+import {MatInputModule} from '@angular/material';
+import {MatMenuModule} from '@angular/material';
 
 
 @NgModule({
@@ -33,7 +37,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatCardModule,
     MatGridListModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule
 
   ],
   declarations: [],
@@ -53,7 +61,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatCardModule,
     MatGridListModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule
 
   ]
 })
