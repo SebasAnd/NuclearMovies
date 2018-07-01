@@ -22,6 +22,10 @@ export class MoviedetailsComponent implements OnInit {
   verifier: any[];
   movie_list: any;
   back_drop_image: any;
+
+  color: 'yellow';
+  mode = 'determinate';
+
   constructor(private route: ActivatedRoute, private service: MovieService, private sanitizer: DomSanitizer) {
     this.trailersarray = null;
     this.get_information();
@@ -56,8 +60,13 @@ export class MoviedetailsComponent implements OnInit {
           data: data
         };
          this.get_trailer();
+         if(this.items.data.backdrop_path == null){
+           this.back_drop_image = this.sanitizer.bypassSecurityTrustStyle
+           ("url('" + 'assets/No_Image/No_image_available.png' +"')");
+           //console.log(this.back_drop_image);
+         }
          this.back_drop_image = this.sanitizer.bypassSecurityTrustStyle
-         ("url('https://image.tmdb.org/t/p/w500"+ this.items.data.backdrop_path + "')");
+         ("url('https://image.tmdb.org/t/p/original"+ this.items.data.backdrop_path + "')");
          //console.log(this.back_drop_image);
       }
       );
@@ -89,7 +98,7 @@ export class MoviedetailsComponent implements OnInit {
     this.overview = 'hola';
     this.ovstatus = value;
     this.verifier[index] = value;
-    for (let n = 0; n < 20; n++) {
+    for (let n = 0; n < this.verifier.length; n++) {
       if(index !== n)
       {
         this.verifier[n] = false;

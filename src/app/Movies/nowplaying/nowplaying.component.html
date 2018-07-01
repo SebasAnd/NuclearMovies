@@ -4,9 +4,8 @@
 <!---{{items.data.results | json}} <div class="personalized_div" (mouseover)="" >{{overview}}  --->
   <h1> <mat-icon class="icon-title">local_movies</mat-icon>Now Playing Movies</h1>
 
-  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="700px" >
-        <mat-grid-tile *ngFor="let i of items.data.results;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
-        >
+  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="3:4.7" >
+        <mat-grid-tile *ngFor="let i of items.data.results;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
 
           <figure class="mat-figure" >
 
@@ -23,8 +22,31 @@
               <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}"  >
               </ng-template>
 
-              <a [routerLink]="['/movie_details',i.id]"><div class="top-left"  (mouseout)="mouseout()"><p class="title"><b>{{i.title}}</b></p><p> {{i.overview}} </p>
-                <p class="vote-list"><mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}</p>
+              <a [routerLink]="['/movie_details',i.id]">
+                <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
+                <div flex ="20">
+                  <p class="title"><b>{{i.title}}</b></p>
+
+                </div>
+
+                <div flex ="60">
+                  <p> {{i.overview}}<!----></p>
+
+                </div>
+                <div flex="10"  class="rate">
+
+                  <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}
+
+
+                </div>
+                  <div flex="10"  class="rate">
+
+                    <mat-icon>date_range</mat-icon>{{i.release_date}}
+
+
+                  </div>
+
+
 
               </div></a>
             </ng-template>

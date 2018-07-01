@@ -9,17 +9,33 @@ div.class-especial{
 
 }
 .vote-list{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+
   text-align: justify;
+
   -moz-text-align-last: justify;
   text-align-last: justify;
-  border: 20px gray double;
+  border: 0px gray double;
 
 }
 
+
 .star_rate{
+
 
   color: yellow;
   font-size: 30px;
+
+}
+.rate{
+
+  text-align: justify;
+  -moz-text-align-last: left;
+  text-align-last: left
 }
 
 .title{
@@ -31,12 +47,14 @@ div.class-especial{
   position: absolute;
   top: 0px;
   left: 0px;
+  right: 0px;
+  bottom: 0px;
   color: white;
-  height: 785px;
-  width: 440px;
+  max-height: content-box;
+  max-width: content-box;
   background-color: gray;
+  background-size: inherit;
   opacity: 0.9;
-  max-font-size: 2px;
 
   text-align: justify;
   -moz-text-align-last: center;

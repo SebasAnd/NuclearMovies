@@ -10,6 +10,9 @@ export class PopularmoviesComponent implements OnInit {
   movie_list: any;
   items: any;
 
+
+  deploymentId
+
   constructor(private movieService: MovieService) {
   }
 

@@ -65,12 +65,56 @@ mat-paginator{
 
 div.background-image{
 
+
   width: 96vw;
-  height:40vw;
+  height:42vw;
   background-size: 100%;
   background-repeat: no-repeat;
 
+  image-rendering: optimizeSpeed;
 }
+
+div.details_information{
+  position: absolute;
+  top: 0vw;
+  bottom: 0vw;
+  left: 0vw;
+  right:0vw;
+  background-color: black;
+  opacity: 0.75;
+}
+.secondary-image {
+  position: absolute;
+  flex: border-box;
+  top: 2vw;
+  bottom: 0vw;
+  left: 4vw;
+  right: 0vw;
+  image-rendering: optimizeSpeed;
+
+  width: --webkit-fill-available;
+  height: --webkit-fill-available;
+}
+div.information{
+  position:absolute;
+  top: 2vw;
+  bottom: 0vw;
+  left: 35vw;
+  right: 0vw;
+  color: white;
+}
+mat-chip.chips-color {
+
+  background-color: lightgreen;
+  color:black;
+}
+
+
+.vote_average_spinner::ng-deep circle {
+  stroke: lightgreen;
+}
+
+
 
 
 

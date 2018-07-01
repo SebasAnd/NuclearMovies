@@ -56,6 +56,6 @@ import {Form, FormsModule, ReactiveFormsModule} from '@angular/forms';
     CombinedsearchComponent,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
 })
 export class ApiModule { }

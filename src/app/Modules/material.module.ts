@@ -17,6 +17,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatFormFieldModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 import {MatMenuModule} from '@angular/material';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import {MatMenuModule} from '@angular/material';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatChipsModule,
+    MatProgressSpinnerModule
 
   ],
   declarations: [],
@@ -65,7 +69,9 @@ import {MatMenuModule} from '@angular/material';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatChipsModule,
+    MatProgressSpinnerModule
 
   ]
 })

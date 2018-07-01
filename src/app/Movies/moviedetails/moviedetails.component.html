@@ -8,16 +8,86 @@
   <mat-tab-group class="demo-tab-group">
     <mat-tab label="Tab 1"  >
       <ng-template mat-tab-label>
-        <mat-icon>security</mat-icon>
+        <mat-icon>details</mat-icon> Details
       </ng-template>
 
-
       <div class="background-image" [style.background-image]='back_drop_image'>
+        <div class="content">
+        <div class="details_information">
+        </div>
 
-        inside the div
+           <!-- <img class="secondary-image" src="https://image.tmdb.org/t/p/w500/{{items.data.poster_path}}">-->
 
+          <div *ngIf = 'items.data.poster_path === null; then trueimage else falseimage'></div>
+
+          <ng-template #trueimage >
+            <img  class="secondary-image" src="assets/No_Image/No_image_available.png">
+          </ng-template>
+          <ng-template  #falseimage>
+            <img class="secondary-image" src="https://image.tmdb.org/t/p/w500/{{items.data.poster_path}}">
+          </ng-template>
+
+
+
+
+          <div class="information" ><h1 class="title">{{items.data.title}}</h1>
+           <div layout = "row" layout-padding>
+             <div flex ="15">
+            <mat-progress-spinner
+              class="vote_average_spinner"
+              [color]="color"
+              [mode]="mode"
+              [value]="(items.data.vote_average*100)/10">
+            </mat-progress-spinner>
+            <div style="position:relative; top: -60px; left: 38px;">
+              {{ items.data.vote_average }}
+            </div>
+             </div>
+
+             <div flex ="85">
+
+             </div>
+          </div>
+            <p>{{items.data.overview}}</p>
+          <p>
+            <mat-chip-list>
+
+             <mat-chip class="chips-color" *ngFor="let genre of items.data.genres" >{{genre.name}}</mat-chip>
+            </mat-chip-list>
+          </p>
+            <div layout = "column" layout-padding>
+              <div flex="5">
+                <div layout = "row" layout-padding>
+                  <div flex="20">
+                    <h3> Release Date: </h3>
+                  </div>
+                  <div flex="20">
+                    <h3> Budget: </h3>
+                  </div>
+                </div>
+              </div>
+              <div flex="95" >
+                <div layout = "row" layout-padding>
+                  <div flex="20">
+                    <h3><mat-icon>date_range</mat-icon> {{items.data.release_date}}</h3>
+                  </div>
+                  <div flex="20">
+                    <h3><mat-icon>monetization_on</mat-icon>{{items.data.budget}}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
       </div>
-      <!--{{items.data | json }}-->
+
+
+
+
+      {{items.data | json }}
 
       <!---{{items.data | json }}
          <!--- "style="background-image: url('{{back_drop_image}}') " <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{items.data.poster_path}}" width="200" height="" >--->
@@ -26,7 +96,7 @@
     </mat-tab>
     <mat-tab label="Tab 2">
       <ng-template mat-tab-label>
-        <mat-icon>attach_file</mat-icon>
+        <mat-icon>people</mat-icon> Cast
       </ng-template>
          <!---{{items.data.credits |json}}--->
 
@@ -53,7 +123,7 @@
     </mat-tab>
     <mat-tab label="Tab 3"> <!--disabled>-->
       <ng-template mat-tab-label>
-        <mat-icon>block</mat-icon>
+        <mat-icon>filters</mat-icon> Images
       </ng-template>
       <!--{{items.data.images|json}}-->
 
@@ -79,7 +149,7 @@
 
     <mat-tab  label="Tab 4"  >
       <ng-template mat-tab-label>
-        <mat-icon>loop</mat-icon>
+        <mat-icon>switch_video</mat-icon> Trailers
       </ng-template>
       <div class="demo-tab-content">
         <!---{{items.data.videos.results|json}}-->
@@ -102,7 +172,7 @@
 
     <mat-tab label="Tab 5">
       <ng-template mat-tab-label>
-        <mat-icon>build</mat-icon>
+        <mat-icon>local_movies</mat-icon> Similar movies
       </ng-template>
       <!--{{items.data.similar|json}}-->
 
@@ -176,7 +246,7 @@
     </mat-tab>
     <mat-tab label="Tab 6">
       <ng-template mat-tab-label>
-        <mat-icon>thumb_down</mat-icon>
+        <mat-icon>movie_filter</mat-icon> Recommended movies
       </ng-template>
       <!--{{items.data.recommendations|json}}-->
 
@@ -256,7 +326,7 @@
     </mat-tab>
     <mat-tab label="Tab 7">
       <ng-template mat-tab-label>
-        <mat-icon>thumb_down</mat-icon>
+        <mat-icon>thumb_down</mat-icon> Movie reviews
       </ng-template>
       {{items.data.reviews|json}}
 
