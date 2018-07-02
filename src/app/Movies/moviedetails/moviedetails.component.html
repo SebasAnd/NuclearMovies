@@ -5,10 +5,10 @@
   <mat-sidenav-container class="example-container" >
 
     <mat-sidenav-content>
-  <mat-tab-group class="demo-tab-group">
-    <mat-tab label="Tab 1"  >
+  <mat-tab-group class="demo-tab-group" >
+    <mat-tab label="Tab 1" colorToggle="lightgreen" >
       <ng-template mat-tab-label>
-        <mat-icon>details</mat-icon> Details
+        <mat-icon class="textwithicon">details</mat-icon> Details
       </ng-template>
 
       <div class="background-image" [style.background-image]='back_drop_image'>
@@ -39,7 +39,7 @@
               [mode]="mode"
               [value]="(items.data.vote_average*100)/10">
             </mat-progress-spinner>
-            <div style="position:relative; top: -60px; left: 38px;">
+            <div style="position:relative; top: -60px; left: 40px;">
               {{ items.data.vote_average }}
             </div>
              </div>
@@ -56,7 +56,7 @@
             </mat-chip-list>
           </p>
             <div layout = "column" layout-padding>
-              <div flex="5">
+              <!--<div flex="5">
                 <div layout = "row" layout-padding>
                   <div flex="20">
                     <h3> Release Date: </h3>
@@ -64,18 +64,77 @@
                   <div flex="20">
                     <h3> Budget: </h3>
                   </div>
+                  <div flex="20">
+                    <h3> Revenue: </h3>
+                  </div>
+                  <div flex="20">
+                    <h3> Original: </h3>
+                  </div>
                 </div>
-              </div>
-              <div flex="95" >
+              </div>-->
+              <div flex="5" >
                 <div layout = "row" layout-padding>
                   <div flex="20">
-                    <h3><mat-icon>date_range</mat-icon> {{items.data.release_date}}</h3>
+                    <h3><mat-icon class="textwithicon">date_range</mat-icon>{{items.data.release_date}}</h3>
                   </div>
                   <div flex="20">
-                    <h3><mat-icon>monetization_on</mat-icon>{{items.data.budget}}</h3>
+                    <h3><mat-icon class="textwithicon">money_off</mat-icon>{{items.data.budget}}</h3>
+                  </div>
+                  <div flex="20">
+                    <h3><mat-icon class="textwithicon">monetization_on</mat-icon>{{items.data.revenue}}</h3>
+                  </div>
+                  <div flex="20">
+                    <h3><mat-icon class="textwithicon">access_time</mat-icon>{{items.data.runtime}} min</h3>
+                    <!--<img src="{{flags.data[0].flag}}">
+                    {{flags.data|json}}-->
+                  </div>
+                  <div flex="20">
+                    <h3><mat-icon class="textwithicon">movie</mat-icon>{{items.data.status}}</h3>
+                    <!--<img src="{{flags.data[0].flag}}">
+                    {{flags.data|json}}-->
+                  </div>
+                  <div flex="20">
+                    <h3><mat-icon class="textwithicon">volume_up</mat-icon>{{items.data.spoken_languages[0].name}}</h3>
+                    <!--<img src="{{flags.data[0].flag}}">
+                    {{flags.data|json}}-->
                   </div>
                 </div>
               </div>
+              <div flex="5">
+                <div layout="column" layout-padding >
+                  <div flex="50">Production Companies:</div>
+                  <div flex="50">
+                <div layout = "row" layout-padding >
+                  <div flex="100/ items.data.production_companies.length" *ngFor="let c of items.data.production_companies">
+                   <div *ngIf="c.logo_path === null; then compimagetrue else compimagefalse"></div>
+                    <ng-template #compimagetrue>
+                      {{c.name}}
+
+                    </ng-template>
+                    <ng-template #compimagefalse>
+                      <img style="width:30px;height: 20px " src="https://image.tmdb.org/t/p/original/{{c.logo_path}}"> {{c.name}}
+                    </ng-template>
+
+                  </div>
+                </div>
+                  </div>
+                </div>
+              </div>
+              <div flex="5">
+                <div layout="column" layout-padding >
+                  <div flex="50">Production Countries: </div>
+                  <div flex="50">
+                    <div layout = "row" layout-padding *ngIf="list_of_countries" >
+                      <div  flex="10"  *ngFor="let c of list_of_countries">
+                      <img class="flags"  src="{{c.flag}}">
+
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+                </div>
+              <div flex="90"></div>
             </div>
 
 
@@ -96,7 +155,7 @@
     </mat-tab>
     <mat-tab label="Tab 2">
       <ng-template mat-tab-label>
-        <mat-icon>people</mat-icon> Cast
+        <mat-icon class="textwithicon">people</mat-icon> Cast
       </ng-template>
          <!---{{items.data.credits |json}}--->
 
@@ -123,16 +182,16 @@
     </mat-tab>
     <mat-tab label="Tab 3"> <!--disabled>-->
       <ng-template mat-tab-label>
-        <mat-icon>filters</mat-icon> Images
+        <mat-icon class="textwithicon">filters</mat-icon> Images
       </ng-template>
       <!--{{items.data.images|json}}-->
 
 
-      <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowWidth="500px" rowHeight="325px">
+      <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowWidth="600px" rowHeight="400px">
         <mat-grid-tile *ngFor="let i of items.data.images.backdrops"   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
         ><figure class="mat-figure">
 
-            <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.file_path}}" alt="Skaret View">
+          <a target="_blank" href="https://image.tmdb.org/t/p/original/{{i.file_path}}"><img  class="image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/original/{{i.file_path}}" alt="Skaret View"></a>
 
 
           <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div><mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}</mat-grid-tile-footer>
@@ -149,7 +208,7 @@
 
     <mat-tab  label="Tab 4"  >
       <ng-template mat-tab-label>
-        <mat-icon>switch_video</mat-icon> Trailers
+        <mat-icon class="textwithicon">switch_video</mat-icon> Trailers
       </ng-template>
       <div class="demo-tab-content">
         <!---{{items.data.videos.results|json}}-->
@@ -172,7 +231,7 @@
 
     <mat-tab label="Tab 5">
       <ng-template mat-tab-label>
-        <mat-icon>local_movies</mat-icon> Similar movies
+        <mat-icon class="textwithicon">local_movies</mat-icon> Similar movies
       </ng-template>
       <!--{{items.data.similar|json}}-->
 
@@ -246,7 +305,7 @@
     </mat-tab>
     <mat-tab label="Tab 6">
       <ng-template mat-tab-label>
-        <mat-icon>movie_filter</mat-icon> Recommended movies
+        <mat-icon class="textwithicon">movie_filter</mat-icon> Recommended movies
       </ng-template>
       <!--{{items.data.recommendations|json}}-->
 
@@ -326,7 +385,7 @@
     </mat-tab>
     <mat-tab label="Tab 7">
       <ng-template mat-tab-label>
-        <mat-icon>thumb_down</mat-icon> Movie reviews
+        <mat-icon class="textwithicon">thumb_down</mat-icon> Movie reviews
       </ng-template>
       {{items.data.reviews|json}}
 

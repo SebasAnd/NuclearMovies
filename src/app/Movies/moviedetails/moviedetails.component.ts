@@ -17,6 +17,8 @@ export class MoviedetailsComponent implements OnInit {
   trailersarray: any[];
   images_array: any[];
   index: any;
+  flags: any;
+  list_of_countries: any[];
   overview: any;
   ovstatus: any;
   verifier: any[];
@@ -28,6 +30,7 @@ export class MoviedetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private service: MovieService, private sanitizer: DomSanitizer) {
     this.trailersarray = null;
+    this.list_of_countries = [];
     this.get_information();
     this.verifier = [];
     for (let n = 0; n < 20; n++) {
@@ -36,9 +39,7 @@ export class MoviedetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.videoURL = 'https://www.youtube.com/embed/' + this.items.data.videos.results[0].key;
-    // this.videoURL = 'https://www.youtube.com/embed/Z5ezsReZcxU';
-    // this.trustedDashboardUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.videoURL);
+
   }
 
   change_page($event) {
@@ -46,8 +47,8 @@ export class MoviedetailsComponent implements OnInit {
     this.parameter = this.route.params.subscribe(params => {
       let id: number = params['id'];
     this.movie_list = this.service.movie_details('movie/' + id , $event.pageIndex).subscribe((data: any) => this.items = {
-      data: data
-    });
+        data: data
+      });
     });
   }
 
@@ -59,19 +60,20 @@ export class MoviedetailsComponent implements OnInit {
         this.items = {
           data: data
         };
-         this.get_trailer();
-         if(this.items.data.backdrop_path == null){
-           this.back_drop_image = this.sanitizer.bypassSecurityTrustStyle
-           ("url('" + 'assets/No_Image/No_image_available.png' +"')");
-           //console.log(this.back_drop_image);
-         }
-         this.back_drop_image = this.sanitizer.bypassSecurityTrustStyle
-         ("url('https://image.tmdb.org/t/p/original"+ this.items.data.backdrop_path + "')");
-         //console.log(this.back_drop_image);
+        this.get_trailer();
+        if (this.items.data.backdrop_path == null) {
+          this.back_drop_image = this.sanitizer.bypassSecurityTrustStyle
+          ("url('" + 'assets/No_Image/No_image_available.png' + "')");
+        }
+        this.back_drop_image = this.sanitizer.bypassSecurityTrustStyle
+        ("url('https://image.tmdb.org/t/p/original" + this.items.data.backdrop_path + "')");
+        this.list_of_countries = [];
+        for (let j of this.items.data.production_countries) {
+         this.get_languageflags(j.iso_3166_1);
+        }
       }
       );
     });
-
   }
 
 
@@ -84,16 +86,12 @@ export class MoviedetailsComponent implements OnInit {
     }
     this.trailersarray = trailers;
   }
-  get_images(  ) {
-    let images: any[];
-    images = [];
-    for(let i of this.items.data.images.backdrops) {
-      let imageURL= 'https://image.tmdb.org/t/p/w500/' + i.file_path;
-      images.push(this.sanitizer.bypassSecurityTrustResourceUrl(imageURL));
-    }
-    this.images_array = images;
+  get_languageflags( language: string ) {
+     this.service.countriesflag(language).subscribe((data: any) => {
+      this.list_of_countries.push(data[0]);
+      console.log(data[0]);
+      });
   }
-
   showoverview(value: boolean, index: number) {
     this.overview = 'hola';
     this.ovstatus = value;
