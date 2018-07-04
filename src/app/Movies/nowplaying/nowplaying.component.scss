@@ -1,0 +1,72 @@
+div.overview_vision{
+
+  size : 40vw;
+  background-color: gray;
+}
+div.class-especial{
+
+  position:relative;
+
+}
+.vote-list{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  text-align: justify;
+
+  -moz-text-align-last: justify;
+  text-align-last: justify;
+  border: 0px gray double;
+
+}
+
+
+.star_rate{
+
+
+  color: yellow;
+  font-size: 30px;
+
+}
+.rate{
+
+  text-align: justify;
+  -moz-text-align-last: left;
+  text-align-last: left
+}
+
+.title{
+
+  font-size: 25px;
+}
+.top-left {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  color: white;
+  max-height: content-box;
+  max-width: content-box;
+  background-color: gray;
+  background-size: inherit;
+  opacity: 0.9;
+
+  text-align: justify;
+  -moz-text-align-last: center;
+  text-align-last: center;
+  border: 20px gray double;
+}
+mat-paginator{
+  background-color: black;
+  color: lightgreen;
+  font-size: 18px;
+}
+.icon-title{
+
+  font-size:30px;
+}

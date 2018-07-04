@@ -1,0 +1,86 @@
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+td-navigation-drawer{
+  background-color: white;
+  color:lightgreen;
+}
+//mat-drawer {
+//  background-color: black;
+//
+//}
+
+mat-toolbar.mat-primary{
+
+  background: black;
+  color: lightgreen;
+  height: 80px;
+  position: fixed;
+}
+
+
+h1{
+  font-size: 40px;
+}
+mat-icon{
+  height: 1000px;
+  size: 1000px;
+}
+
+//p{
+//  background: black;
+//  color: lightgreen;
+//  font-size: 18px;
+//}
+////a.mat-list-item{
+//
+//  background: black;
+//  color: lightgreen;
+//  font-size: 18px;
+//}
+button.mat-button{
+  background: black;
+  color: lightgreen;
+  font-size: 18px;
+}
+td-layout.td-navigation-drawer{
+  background: black;
+
+}
+
+
+
+//input{
+//
+//  background-color: black;
+//  color: lightgreen;
+//  border-color: lightgreen;
+//  position: absolute;
+//  right: 6vw;
+//  font-size: 18px;
+//}
+/*a.search-button{
+  position: absolute;
+  right: 1.7vw;
+  background: black;
+  color: lightgreen;
+  font-size: 18px;
+}*/
+
+
+
+.material-icons.md-24 { font-size: 40px; }
+.material-icons.md-25 { font-size: 30px; }
+
+
+app-combinedsearch.menu{
+
+  background-color: white;
+
+
+
+}
