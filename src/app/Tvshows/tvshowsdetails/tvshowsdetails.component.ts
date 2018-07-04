@@ -12,7 +12,14 @@ export class TvshowsdetailsComponent implements OnInit {
   parameter: any;
   details_list: any;
   items: any;
-  constructor(private route: ActivatedRoute, private service: TvshowsService ) { }
+  verifier: any;
+  constructor(private route: ActivatedRoute, private service: TvshowsService ) {
+
+    this.verifier = [];
+    for (let n = 0; n < 20; n++) {
+      this.verifier.push(false);
+    }
+  }
 
   ngOnInit() {
     this.parameter = this.route.params.subscribe(params => {
@@ -21,6 +28,19 @@ export class TvshowsdetailsComponent implements OnInit {
         data: data
       });
     });
+  }
+  showoverview(value: boolean, index: number) {
+    this.verifier[index] = value;
+    for (let n = 0; n < this.verifier.length; n++) {
+      if (index !== n)
+      {
+        this.verifier[n] = false;
+      }
+    }}
+  mouseout(){
+    for (let n = 0; n < 20; n++) {
+      this.verifier[n] = false;
+    }
   }
 
 }

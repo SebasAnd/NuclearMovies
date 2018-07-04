@@ -2,56 +2,573 @@
 
 
 
-  <mat-sidenav-container class="example-container" style="background-image: url('https://image.tmdb.org/t/p/w500/{{items.data.backdrop_path}}') ">
+  <mat-sidenav-container class="example-container" >
 
     <mat-sidenav-content>
       <mat-tab-group class="demo-tab-group">
         <mat-tab label="Tab 1">
           <ng-template mat-tab-label>
-            <mat-icon>security</mat-icon>
+            <mat-icon class="textwithicon">details</mat-icon> Details
           </ng-template>
+          <div class="background-image" [style.background-image]='back_drop_image'>
+            </div>
+          <div class="content">
+            <div class="details_information">
+            </div>
 
-          {{items.data | json }}
-          <!--- <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{items.data.poster_path}}" width="200" height="" >--->
+            <div *ngIf = 'items.data.profile_path === null; then trueimage else falseimage'></div>
+
+            <ng-template #trueimage >
+              <img  class="secondary-image" style="" src="assets/No_Image/No_image_available.png">
+            </ng-template>
+            <ng-template  #falseimage>
+              <img class="secondary-image" src="https://image.tmdb.org/t/p/w500/{{items.data.profile_path}}">
+            </ng-template>
+
+            <div class="information" ><h1 class="title">{{items.data.name}}</h1> <div *ngIf="items.data.also_known_as" layout="columns" layout-padding> <div flex="100/items.data.also_known_as.length" *ngFor="let k of items.data.also_known_as"> {{k}}, </div></div>
+              <div layout = "row" layout-padding>
+                <div flex ="15" *ngIf="items.data.popularity">
+                  <mat-progress-spinner
+                    class="vote_average_spinner"
+                    [color]="color"
+                    [mode]="mode"
+                    [value]="(items.data.popularity*100)/10">
+                  </mat-progress-spinner>
+                  <div style="position:relative; top: -60px; left: 40px;">
+                    {{ items.data.popularity | number: '1.1-1' }}
+                  </div>
+                </div>
+                <div flex="85">
+                  <div layout="row" layout_padding>
+                    <div flex="25"*ngIf="items.data.external_ids">
+                      <a target="_blank" *ngIf="items.data.external_ids.imdb_id" href="https://www.imdb.com/name/{{ items.data.external_ids.imdb_id}}"><h5 *ngIf="items.data.external_ids.imdb_id">{{ items.data.external_ids.imdb_id }}</h5></a>
+                    </div>
+
+                    <div flex="25" *ngIf="items.data.external_ids">
+                      <a target="_blank" *ngIf="items.data.external_ids.facebook_id" href="https://www.facebook.com/{{ items.data.external_ids.facebook_id}}"><h5 *ngIf="items.data.external_ids.facebook_id">{{ items.data.external_ids.facebook_id}}</h5></a>
+                    </div>
+                    <div flex="25"  *ngIf="items.data.external_ids">
+                      <a target="_blank" *ngIf="items.data.external_ids.instagram_id" href="https://www.instagram.com/{{ items.data.external_ids.instagram_id}}"><h5 *ngIf="items.data.external_ids.instagram_id">{{ items.data.external_ids.instagram_id}}</h5></a>
+                    </div>
+                    <div flex="25" *ngIf="items.data.external_ids" >
+                      <a target="_blank"  *ngIf="items.data.external_ids.twitter_id" href="https://twitter.com/{{ items.data.external_ids.twitter_id}}"><h5 *ngIf="items.data.external_ids.twitter_id">{{ items.data.external_ids.twitter_id}}</h5></a>
+                    </div>
+
+                  </div>
+
+                </div>
 
 
-        </mat-tab>
-        <mat-tab label="Tab 2">
-          <ng-template mat-tab-label>
-            <mat-icon>attach_file</mat-icon>
-          </ng-template>
-          <div class="demo-tab-content">
-            {{items.data.movie_credits |json}}
+              </div>
+              <p class="maincontent">{{items.data.biography}}</p>
 
+              <p>
+                <mat-chip-list>
+
+                  <mat-chip class="chips-color" *ngFor="let genre of items.data.genres" >{{genre.name}}</mat-chip>
+                </mat-chip-list>
+              </p>
+              <div layout = "row" layout-padding>
+
+                <div flex="40" >
+                  <div layout = "column" layout-padding>
+                    <div flex="40" *ngIf="items.data.birthday">
+                      <div layout="row" layout-padding>
+                        <div flex="40">
+                      <h3><mat-icon class="textwithicon">date_range</mat-icon>{{items.data.birthday}}</h3>
+                        </div>
+
+                        <div flex="40" *ngIf="items.data.deathday">
+                          <h3><mat-icon class="textwithicon">date_range</mat-icon>{{items.data.deathday}} </h3>
+                        </div>
+                        <div flex="40" *ngIf="items.data.gender">
+                          <h3><mat-icon class="textwithicon">person_pin</mat-icon>{{person_gender(items.data.gender)}} </h3>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div flex="20" *ngIf="items.data.birthday">
+                      <h3><mat-icon class="textwithicon">place</mat-icon>{{items.data.place_of_birth}} </h3>
+                    </div>
+
+                  </div>
+
+            </div>
 
           </div>
-        </mat-tab>
-        <mat-tab label="Tab 3"> <!--disabled>-->
-          <ng-template mat-tab-label>
-            <mat-icon>block</mat-icon>
-          </ng-template>
-          {{items.data.tv_credits|json}}
-        </mat-tab>
-        <mat-tab label="Tab 4">
-          <ng-template mat-tab-label>
-            <mat-icon>loop</mat-icon>
-          </ng-template>
-          <div class="demo-tab-content">
-            {{items.data.images|json}}
+            </div>
           </div>
-        </mat-tab>
-        <mat-tab label="Tab 5">
-          <ng-template mat-tab-label>
-            <mat-icon>build</mat-icon>
-          </ng-template>
-          {{items.data.tagged_images|json}}
-        </mat-tab>
-        <mat-tab label="Tab 6">
-          <ng-template mat-tab-label>
-            <mat-icon>thumb_down</mat-icon>
-          </ng-template>
-          {{items.data.external_ids|json}}
-        </mat-tab>
+
+
+            </mat-tab>
+        <div *ngIf="items.data.movie_credits.cast.length ===0; then truemoviecredit else falsemoviecredits"></div>
+        <ng-template #truemoviecredits></ng-template>
+        <ng-template #falsemoviecredits>
+              <mat-tab label="Tab 2">
+                <ng-template mat-tab-label>
+                  <mat-icon class="textwithicon">movie</mat-icon> Cast Movies
+                </ng-template>
+
+
+                <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="3:4.7">
+                  <mat-grid-tile *ngFor="let i of items.data.movie_credits.cast ;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
+
+                    <figure class="mat-figure" >
+
+
+                      <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
+                      <ng-template #trueB>
+                        <div *ngIf = 'i.poster_path === null; then trueC else falseC'></div>
+
+
+                        <ng-template #trueC>
+                          <img  class="mat-card-image" style="" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
+                        </ng-template>
+                        <ng-template #falseC>
+                          <img  class="mat-card-image" style="" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/original{{i.poster_path}}"  >
+                        </ng-template>
+
+                        <a  [routerLink]="['/movie_details',i.id]">
+                          <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
+                            <div flex ="20">
+                              <p class="title"><b>{{i.title}}</b></p>
+
+                            </div>
+
+                            <div flex ="60">
+                              <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
+
+                            </div>
+                            <div flex="10"  class="rate">
+
+                              <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average }}
+
+
+                            </div>
+                            <div flex="10"  class="rate">
+
+                              <mat-icon>date_range</mat-icon>{{i.release_date}}
+
+
+                            </div>
+
+
+
+                          </div></a>
+                      </ng-template>
+                      <ng-template #falseB>
+
+                        <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
+
+                        <ng-template #trueA>
+                          <img  class="mat-card-image" mat-card-image="" style="" src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
+                        </ng-template>
+                        <ng-template #falseA>
+                          <img  class="mat-card-image" mat-card-image="" style="" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
+                        </ng-template>
+                      </ng-template>
+
+
+
+
+                      <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.title}}</mat-grid-tile-footer>
+
+                    </figure></mat-grid-tile>
+                </mat-grid-list>
+
+
+                <div *ngIf="items.data.movie_credits.total_pages > 1; then truepag else falsepag"></div>
+                <ng-template #truepag>
+                  <mat-paginator [length]="items.data.movie_credits.total_results"
+                                 [pageSize]="items.data.movie_credits.length"
+                                 [pageSizeOptions]=""
+                                 [pageIndex]="0"
+                                 (page)= "change_page($event)">
+
+                  </mat-paginator>
+
+
+                </ng-template>
+                <ng-template #falsepag>
+
+                </ng-template>
+
+
+
+
+
+
+              </mat-tab>
+
+            </ng-template>
+
+
+        <div *ngIf="items.data.movie_credits.crew.length ===0; then truemoviecreditcrew else falsemoviecreditscrew"></div>
+
+        <ng-template #truemoviecreditscrew></ng-template>
+        <ng-template #falsemoviecreditscrew>
+          <mat-tab label="Tab 2">
+            <ng-template mat-tab-label>
+              <mat-icon class="textwithicon">movie</mat-icon> Movies Crew
+            </ng-template>
+
+            <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="3:4.7">
+              <mat-grid-tile *ngFor="let i of items.data.movie_credits.crew ;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
+
+                <figure class="mat-figure" >
+
+
+                  <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
+                  <ng-template #trueB>
+                    <div *ngIf = 'i.poster_path === null; then trueC else falseC'></div>
+
+
+                    <ng-template #trueC>
+                      <img  class="mat-card-image" style=""mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
+                    </ng-template>
+                    <ng-template #falseC>
+                      <img  class="mat-card-image" style="" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/original/{{i.poster_path}}"  >
+                    </ng-template>
+
+                    <a  [routerLink]="['/movie_details',i.id]">
+                      <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
+                        <div flex ="20">
+                          <p class="title"><b>{{i.title}} </b></p>
+
+                        </div>
+
+                        <div flex ="60">
+                          <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
+
+                        </div>
+                        <div flex="10"  class="rate">
+
+                          <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}
+
+
+                        </div>
+                        <div flex="10"  class="rate">
+
+                          <mat-icon>date_range</mat-icon>{{i.release_date}}
+
+
+                        </div>
+
+
+
+                      </div></a>
+                  </ng-template>
+                  <ng-template #falseB>
+
+                    <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
+
+                    <ng-template #trueA>
+                      <img  class="mat-card-image" mat-card-image="" style=""  tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
+                    </ng-template>
+                    <ng-template #falseA>
+                      <img  class="mat-card-image" mat-card-image="" style=""tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
+                    </ng-template>
+                  </ng-template>
+
+
+
+
+                  <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.title}}: {{i.job}}</mat-grid-tile-footer>
+
+                </figure></mat-grid-tile>
+            </mat-grid-list>
+
+            <div *ngIf="items.data.movie_credits.total_pages > 1; then truepag else falsepag"></div>
+            <ng-template #truepag>
+              <mat-paginator [length]="items.data.movie_credits.total_results"
+                             [pageSize]="items.data.movie_credits.length"
+                             [pageSizeOptions]=""
+                             [pageIndex]="0"
+                             (page)= "change_page($event)">
+
+              </mat-paginator>
+
+
+            </ng-template>
+            <ng-template #falsepag>
+
+            </ng-template>
+
+
+
+
+
+
+          </mat-tab>
+
+        </ng-template>
+
+
+
+        <div *ngIf="items.data.tv_credits.cast.length ===0; then truetvcredit else falsetvcredits"></div>
+        <ng-template #truetvcredits></ng-template>
+        <ng-template #falsetvcredits>
+          <mat-tab label="Tab 3">
+            <ng-template mat-tab-label>
+              <mat-icon class="textwithicon">tv</mat-icon> Cast Tv
+            </ng-template>
+
+
+            <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="3:4.7">
+              <mat-grid-tile *ngFor="let i of items.data.tv_credits.cast ;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
+
+                <figure class="mat-figure" >
+
+
+                  <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
+                  <ng-template #trueB>
+                    <div *ngIf = 'i.poster_path === null; then trueC else falseC'></div>
+
+
+                    <ng-template #trueC>
+                      <img  class="mat-card-image" style="" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
+                    </ng-template>
+                    <ng-template #falseC>
+                      <img  class="mat-card-image"  style=""mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/original/{{i.poster_path}}"  >
+                    </ng-template>
+
+                    <a  [routerLink]="['/tvshow_details',i.id]">
+                      <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
+                        <div flex ="20">
+                          <p class="title"><b>{{i.name}}</b></p>
+
+                        </div>
+
+                        <div flex ="60">
+
+                          <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p><!---->
+
+                        </div>
+                        <div flex="10"  class="rate" *ngIf="i.vote_average">
+
+                          <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}
+
+
+                        </div>
+                        <div flex="10"  class="rate">
+
+                          <mat-icon>date_range</mat-icon>{{i.first_air_date}}
+
+
+                        </div>
+
+
+
+                      </div></a>
+                  </ng-template>
+                  <ng-template #falseB>
+
+                    <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
+
+                    <ng-template #trueA>
+                      <img  class="mat-card-image" mat-card-image="" style=""  src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
+                    </ng-template>
+                    <ng-template #falseA>
+                      <img  class="mat-card-image" mat-card-image="" style="" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
+                    </ng-template>
+                  </ng-template>
+
+
+
+
+                  <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.name}}</mat-grid-tile-footer>
+
+                </figure></mat-grid-tile>
+            </mat-grid-list>
+
+
+            <div *ngIf="items.data.tv_credits.total_pages > 1; then truepagtvcredits else falsepagtvcredits"></div>
+            <ng-template #truepagtvcredits>
+              <mat-paginator [length]="items.data.tv_credits.total_results"
+                             [pageSize]="items.data.tv_credits.length"
+                             [pageSizeOptions]=""
+                             [pageIndex]="0"
+                             (page)= "change_page($event)">
+
+              </mat-paginator>
+
+
+            </ng-template>
+            <ng-template #falsepagtvcredits>
+
+
+
+            </ng-template>
+
+
+
+
+
+
+          </mat-tab>
+
+        </ng-template>
+        <div *ngIf="items.data.tv_credits.crew.length ===0; then truetvcreditcrew else falsetvcreditscrew"></div>
+        <ng-template #truetvcreditscrew></ng-template>
+        <ng-template #falsetvcreditscrew>
+          <mat-tab label="Tab 4">
+            <ng-template mat-tab-label>
+              <mat-icon class="textwithicon">tv</mat-icon> Crew Tv
+            </ng-template>
+
+
+            <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="3:4.7">
+              <mat-grid-tile *ngFor="let i of items.data.tv_credits.crew ;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
+
+                <figure class="mat-figure" >
+
+
+                  <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
+                  <ng-template #trueB>
+                    <div *ngIf = 'i.poster_path === null; then trueC else falseC'></div>
+
+
+                    <ng-template #trueC>
+                      <img  class="mat-card-image" style="" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
+                    </ng-template>
+                    <ng-template #falseC>
+                      <img  class="mat-card-image"  style="" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/original/{{i.poster_path}}"  >
+                    </ng-template>
+
+                    <a  [routerLink]="['/tvshow_details',i.id]">
+                      <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
+                        <div flex ="20">
+                          <p class="title"><b>{{i.name}}</b></p>
+
+                        </div>
+
+                        <div flex ="60" >
+
+                          <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
+
+                        </div>
+                        <div flex="10"  class="rate" *ngIf="i.vote_average">
+
+                          <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}
+
+
+                        </div>
+                        <div flex="10"  class="rate">
+
+                          <mat-icon>date_range</mat-icon>{{i.first_air_date}}
+
+
+                        </div>
+
+
+
+                      </div></a>
+                  </ng-template>
+                  <ng-template #falseB>
+
+                    <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
+
+                    <ng-template #trueA>
+                      <img  class="mat-card-image" mat-card-image="" style=""  src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
+                    </ng-template>
+                    <ng-template #falseA>
+                      <img  class="mat-card-image" mat-card-image="" style="" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
+                    </ng-template>
+                  </ng-template>
+
+
+
+
+                  <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.name}}</mat-grid-tile-footer>
+
+                </figure></mat-grid-tile>
+            </mat-grid-list>
+
+            <div *ngIf="items.data.tv_credits.total_pages > 1; then truepagtvcredits else falsepagtvcredits"></div>
+            <ng-template #truepagtvcredits>
+              <mat-paginator [length]="items.data.tv_credits.total_results"
+                             [pageSize]="items.data.tv_credits.length"
+                             [pageSizeOptions]=""
+                             [pageIndex]="0"
+                             (page)= "change_page($event)">
+
+              </mat-paginator>
+
+
+            </ng-template>
+            <ng-template #falsepagtvcredits>
+
+
+
+            </ng-template>
+
+
+
+
+
+
+          </mat-tab>
+
+        </ng-template>
+        <div *ngIf="items.data.images.profiles.length ===0; then trueimages else falseimages"></div>
+        <ng-template #trueimages></ng-template>
+        <ng-template #falseimages>
+          <mat-tab label="Tab 4">
+            <ng-template mat-tab-label>
+              <mat-icon class="textwithicon">filters</mat-icon> Profile Images
+            </ng-template>
+
+
+
+            <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowWidth="600px" rowHeight="400px" >
+              <mat-grid-tile *ngFor="let i of items.data.images.profiles"   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
+              ><figure class="mat-figure">
+
+                <a target="_blank" href="https://image.tmdb.org/t/p/original/{{i.file_path}}"><img  class="image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/original/{{i.file_path}}" alt="Skaret View"></a>
+
+
+                <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div><div *ngIf="i.vote_average"><mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average | number: '1.1-1' }}</div></mat-grid-tile-footer>
+              </figure></mat-grid-tile>
+            </mat-grid-list>
+
+
+
+
+
+
+          </mat-tab>
+        </ng-template>
+        <div *ngIf="items.data.tagged_images.results.length ===0; then truetagimages else falsetagimages"></div>
+        <ng-template #truetagimages></ng-template>
+        <ng-template #falsetagimages>
+          <mat-tab label="Tab 4">
+            <ng-template mat-tab-label>
+              <mat-icon class="textwithicon">collections</mat-icon> Tagged Images
+            </ng-template>
+
+
+
+            <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowWidth="600px" rowHeight="400px">
+              <mat-grid-tile *ngFor="let i of items.data.tagged_images.results"   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
+              ><figure class="mat-figure">
+
+                <a target="_blank" href="https://image.tmdb.org/t/p/original/{{i.file_path}}"><img  class="image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/original/{{i.file_path}}" alt="Skaret View"></a>
+
+
+                <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div><div *ngIf="i.vote_average"><mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average | number: '1.1-1' }}</div></mat-grid-tile-footer>
+              </figure></mat-grid-tile>
+            </mat-grid-list>
+
+
+
+
+
+
+          </mat-tab>
+        </ng-template>
+
+
 
       </mat-tab-group>
 

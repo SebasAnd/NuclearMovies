@@ -30,7 +30,7 @@
                 </div>
 
                 <div flex ="60">
-                  <p> {{i.overview}}<!----></p>
+                  <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
 
                 </div>
                 <div flex="10"  class="rate">

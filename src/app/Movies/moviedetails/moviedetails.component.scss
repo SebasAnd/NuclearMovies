@@ -6,6 +6,7 @@
   bottom:0vw;
   background: #eee;
 
+
 }
 
 figure.mat-figure{
@@ -13,32 +14,35 @@ figure.mat-figure{
 
 }
 .mat-card-image{
-  display: block;
-  max-width: px;
-  max-height: px;
-  position: relative;
-  top: 30px;
-  left: 30px;
-  right: 10px;
-  bottom: 30px;
+  width: 500px;
+  height:785px;
+
 }
 
 .top-left {
   display: inline-block;
   position: absolute;
   top: 0px;
-  left: 7px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   color: white;
-  height: 780px;
-  width: 410px;
+  max-height: content-box;
+  max-width: content-box;
   background-color: gray;
+  background-size: inherit;
   opacity: 0.9;
-  max-font-size: 2px;
 
   text-align: justify;
   -moz-text-align-last: center;
   text-align-last: center;
   border: 20px gray double;
+}
+.rate{
+
+  text-align: justify;
+  -moz-text-align-last: left;
+  text-align-last: left
 }
 mat-paginator{
   background-color: black;
@@ -66,8 +70,8 @@ mat-paginator{
 div.background-image{
 
 
-  width: 96vw;
-  height:42vw;
+  width: 95vw;
+  height: 48vw;
   background-size: 100%;
   background-repeat: no-repeat;
 
@@ -81,7 +85,7 @@ div.details_information{
   left: 0vw;
   right:0vw;
   background-color: black;
-  opacity: 0.75;
+  opacity: 0.65;
 }
 .secondary-image {
   position: absolute;
@@ -129,6 +133,20 @@ mat-chip.chips-color {
 }
 
 
+div.reviewdiv{
+
+  background-color: lightgray;
+
+}
+div.reviewcontent{
+
+  background-color: white;
 
 
+}
+.maincontent{
+
+  text-align: justify;
+  margin: 20px;
+}
 
