@@ -1,0 +1,152 @@
+<div *ngIf="items && movies && people&&tvshows&&companies&&collections">
+
+
+
+  <mat-sidenav-container class="example-container">
+
+    <mat-sidenav-content>
+      <mat-tab-group class="demo-tab-group">
+        <mat-tab label="Tab 1">
+          <ng-template mat-tab-label>
+            <mat-icon>security</mat-icon>
+          </ng-template>
+
+          {{items.data | json }}
+          <!--- <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{items.data.poster_path}}" width="200" height="" >--->
+
+          <div *ngIf = 'items.data.total_pages > 1; then morepages else nomorepages'></div>
+          <ng-template #morepages>
+
+            <mat-paginator [length]="items.data.total_results"
+                           [pageSize]="20"
+                           [pageSizeOptions]=""
+                           [pageIndex]="0"
+                           (page)= "change_pagemulti($event)">
+
+            </mat-paginator>
+          </ng-template>
+
+          <ng-template #nomorepages>
+
+
+          </ng-template>
+
+        </mat-tab>
+        <mat-tab label="Tab 2">
+          <ng-template mat-tab-label>
+            <mat-icon>attach_file</mat-icon>
+          </ng-template>
+          <div class="demo-tab-content">
+            {{movies.data |json}}
+            <div *ngIf = 'movies.data.total_pages > 1; then morepagesmovie else nomorepagesmovie'></div>
+            <ng-template #morepagesmovie>
+            <mat-paginator [length]="movies.data.total_results"
+                           [pageSize]="20"
+                           [pageSizeOptions]=""
+                           [pageIndex]="0"
+                           (page)= "change_pagemovie($event)">
+
+            </mat-paginator>
+            </ng-template>
+          <ng-template #nomorepagesmovie>
+
+          </ng-template>
+          </div>
+        </mat-tab>
+        <mat-tab label="Tab 3"> <!--disabled>-->
+          <ng-template mat-tab-label>
+            <mat-icon>block</mat-icon>
+          </ng-template>
+          {{people.data|json}}
+          <div *ngIf = 'people.data.total_pages > 1; then morepagespeople else nomorepagespeople'></div>
+          <ng-template #morepagespeople>
+
+            <mat-paginator [length]="people.data.total_results"
+                           [pageSize]="20"
+                           [pageSizeOptions]=""
+                           [pageIndex]="0"
+                           (page)= "change_pagepeople($event)">
+
+            </mat-paginator>
+          </ng-template>
+
+          <ng-template #nomorepagespeople>
+
+
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Tab 4">
+          <ng-template mat-tab-label>
+            <mat-icon>loop</mat-icon>
+          </ng-template>
+          <div class="demo-tab-content">
+            {{tvshows.data|json}}
+            <div *ngIf = 'tvshows.data.total_pages > 1; then morepagestv else nomorepagestv'></div>
+            <ng-template #morepagestv>
+
+              <mat-paginator [length]="tvshows.data.total_results"
+                             [pageSize]="20"
+                             [pageSizeOptions]=""
+                             [pageIndex]="0"
+                             (page)= "change_pageshows($event)">
+
+              </mat-paginator>
+            </ng-template>
+
+            <ng-template #nomorepagestv>
+
+
+            </ng-template>
+          </div>
+        </mat-tab>
+        <mat-tab label="Tab 5">
+          <ng-template mat-tab-label>
+            <mat-icon>build</mat-icon>
+          </ng-template>
+          {{companies.data|json}}
+          <div *ngIf = 'companies.data.total_pages > 1; then morepagescompanies else nomorepagescompanies'></div>
+          <ng-template #morepagescompanies>
+
+            <mat-paginator [length]="companies.data.total_results"
+                           [pageSize]="20"
+                           [pageSizeOptions]=""
+                           [pageIndex]="0"
+                           (page)= "change_pagecompany($event)">
+
+            </mat-paginator>
+          </ng-template>
+
+          <ng-template #nomorepagescompanies>
+
+
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Tab 6">
+          <ng-template mat-tab-label>
+            <mat-icon>thumb_down</mat-icon>
+          </ng-template>
+          {{collections.data|json}}
+          <div *ngIf = 'collections.data.total_pages > 1; then morepagescollections else nomorepagescollections'></div>
+          <ng-template #morepagescollections>
+
+            <mat-paginator [length]="collections.data.total_results"
+                           [pageSize]="20"
+                           [pageSizeOptions]=""
+                           [pageIndex]="0"
+                           (page)= "change_pagecollections($event)">
+
+            </mat-paginator>
+          </ng-template>
+
+          <ng-template #nomorepagescollections>
+
+
+          </ng-template>
+        </mat-tab>
+
+      </mat-tab-group>
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

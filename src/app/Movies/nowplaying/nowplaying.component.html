@@ -1,0 +1,85 @@
+
+<div *ngIf="items" >
+<!---<button mat-button (click)="showConfig()">boton</button>--->
+<!---{{items.data.results | json}} <div class="personalized_div" (mouseover)="" >{{overview}}  --->
+  <h1> <mat-icon class="icon-title">local_movies</mat-icon>Now Playing Movies</h1>
+
+  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="3:4.7" >
+        <mat-grid-tile *ngFor="let i of items.data.results;let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
+
+          <figure class="mat-figure" >
+
+
+            <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
+            <ng-template #trueB>
+              <div *ngIf = 'i.poster_path === null; then trueC else falseC'></div>
+
+
+              <ng-template #trueC>
+                <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
+              </ng-template>
+              <ng-template #falseC>
+              <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}"  >
+              </ng-template>
+
+              <a [routerLink]="['/movie_details',i.id]">
+                <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
+                <div flex ="20">
+                  <p class="title"><b>{{i.title}}</b></p>
+
+                </div>
+
+                <div flex ="60">
+                  <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
+
+                </div>
+                <div flex="10"  class="rate">
+
+                  <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}
+
+
+                </div>
+                  <div flex="10"  class="rate">
+
+                    <mat-icon>date_range</mat-icon>{{i.release_date}}
+
+
+                  </div>
+
+
+
+              </div></a>
+            </ng-template>
+            <ng-template #falseB>
+
+          <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
+
+            <ng-template #trueA>
+            <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
+          </ng-template>
+          <ng-template #falseA>
+            <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
+          </ng-template>
+            </ng-template>
+
+
+
+
+          <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.title}}</mat-grid-tile-footer>
+
+          </figure></mat-grid-tile>
+  </mat-grid-list>
+  <!---{{items.data | json}}
+     {{items.data.total_results}}--->
+
+
+  <mat-paginator [length]="items.data.total_results"
+                 [pageSize]="items.data.results.length"
+                 [pageSizeOptions]=""
+                 [pageIndex]="0"
+    (page)= "change_page($event)">
+
+  </mat-paginator>
+
+</div>
+

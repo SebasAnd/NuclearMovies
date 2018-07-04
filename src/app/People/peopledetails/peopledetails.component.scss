@@ -1,0 +1,152 @@
+.example-container {
+  position: absolute;
+  top: 5vw;
+  left: 2vw;
+  right: 2vw;
+  bottom:0vw;
+  background: #eee;
+
+
+}
+.maincontent{
+
+  text-align: justify;
+  margin: 20px;
+}
+
+figure.mat-figure{
+
+
+}
+.mat-card-image{
+  width: 500px;
+  height:785px;
+
+}
+
+.top-left {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  color: white;
+  max-height: content-box;
+  max-width: content-box;
+  background-color: gray;
+  background-size: inherit;
+  opacity: 0.9;
+
+  text-align: justify;
+  -moz-text-align-last: center;
+  text-align-last: center;
+  border: 20px gray double;
+}
+.rate{
+
+  text-align: justify;
+  -moz-text-align-last: left;
+  text-align-last: left
+}
+mat-paginator{
+  background-color: black;
+  color: lightgreen;
+  font-size: 18px;
+}
+
+.star_rate{
+
+  color: yellow;
+  font-size: 30px;
+}
+
+
+.vote-list{
+  text-align: justify;
+  -moz-text-align-last: justify;
+  text-align-last: justify;
+  border: 20px gray double;
+
+}
+
+
+
+div.background-image{
+
+
+  width: 95vw;
+  height: 48vw;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  image-rendering: optimizeSpeed;
+}
+
+div.details_information{
+  position: absolute;
+  top: 0vw;
+  bottom: 0vw;
+  left: 0vw;
+  right:0vw;
+  background-color: black;
+  opacity: 0.65;
+}
+.secondary-image {
+  position: absolute;
+  flex: border-box;
+  top: 2vw;
+  bottom: 0vw;
+  left: 4vw;
+  right: 0vw;
+  image-rendering: optimizeSpeed;
+
+  width: --webkit-fill-available;
+  height: --webkit-fill-available;
+}
+div.information{
+  position:absolute;
+  top: 2vw;
+  bottom: 0vw;
+  left: 35vw;
+  right: 0vw;
+  color: white;
+}
+mat-chip.chips-color {
+
+  background-color: lightgreen;
+  color:black;
+}
+
+
+.vote_average_spinner::ng-deep circle {
+  stroke: lightgreen;
+}
+.image{
+  height: 500px;
+  width: 600px;
+}
+
+.flags{
+
+  width: 70px;
+  height: 50px;
+}
+.textwithicon{
+
+  margin: 8px;
+}
+
+
+div.reviewdiv{
+
+  background-color: lightgray;
+
+}
+div.reviewcontent{
+
+  background-color: white;
+
+
+}
+
