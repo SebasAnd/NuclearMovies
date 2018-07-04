@@ -19,7 +19,7 @@
             <div *ngIf = 'items.data.profile_path === null; then trueimage else falseimage'></div>
 
             <ng-template #trueimage >
-              <img  class="secondary-image" style="" src="assets/No_Image/No_image_available.png">
+              <img  class="mat-card-image" style="position:absolute;top:0;" src="assets/No_Image/No_image_available.png">
             </ng-template>
             <ng-template  #falseimage>
               <img class="secondary-image" src="https://image.tmdb.org/t/p/w500/{{items.data.profile_path}}">
@@ -140,7 +140,7 @@
                               <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
 
                             </div>
-                            <div flex="10"  class="rate">
+                            <div flex="10"  class="rate"  *ngIf="i.vote_average">
 
                               <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average }}
 
@@ -242,7 +242,7 @@
                           <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
 
                         </div>
-                        <div flex="10"  class="rate">
+                        <div flex="10"  class="rate"  *ngIf="i.vote_average">
 
                           <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}
 

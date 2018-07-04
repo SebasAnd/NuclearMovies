@@ -23,7 +23,7 @@
           <div *ngIf = 'items.data.poster_path === null; then trueimage else falseimage'></div>
 
           <ng-template #trueimage >
-            <img  class="secondary-image" style="" src="assets/No_Image/No_image_available.png">
+            <img  class="mat-card-image" style="position:absolute;top:0;" src="assets/No_Image/No_image_available.png">
           </ng-template>
           <ng-template  #falseimage>
             <img class="secondary-image" src="https://image.tmdb.org/t/p/w500/{{items.data.poster_path}}">
@@ -34,7 +34,7 @@
 
           <div class="information" ><h1 class="title">{{items.data.title}}</h1>
            <div layout = "row" layout-padding>
-             <div flex ="15" *ngIf="items.data.vote_average">
+             <div flex ="15" *ngIf="items.data.vote_average > 0">
             <mat-progress-spinner
               class="vote_average_spinner"
               [color]="color"
