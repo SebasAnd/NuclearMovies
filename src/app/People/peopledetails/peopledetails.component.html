@@ -27,12 +27,12 @@
 
             <div class="information" ><h1 class="title">{{items.data.name}}</h1> <div *ngIf="items.data.also_known_as" layout="columns" layout-padding> <div flex="100/items.data.also_known_as.length" *ngFor="let k of items.data.also_known_as"> {{k}}, </div></div>
               <div layout = "row" layout-padding>
-                <div flex ="15" *ngIf="items.data.popularity">
+                <div flex ="15" *ngIf="items.data.popularity > 0">
                   <mat-progress-spinner
                     class="vote_average_spinner"
                     [color]="color"
                     [mode]="mode"
-                    [value]="(items.data.popularity*100)/10">
+                    [value]="items.data.popularity">
                   </mat-progress-spinner>
                   <div style="position:relative; top: -60px; left: 40px;">
                     {{ items.data.popularity | number: '1.1-1' }}
@@ -485,10 +485,10 @@
                 </figure></mat-grid-tile>
             </mat-grid-list>
 
-            <div *ngIf="items.data.tv_credits.total_pages > 1; then truepagtvcredits else falsepagtvcredits"></div>
+            <div *ngIf="items.data.tv_credits.crew.total_pages > 1; then truepagtvcreditscrewpag else falsepagtvcreditscrewpag"></div>
             <ng-template #truepagtvcredits>
-              <mat-paginator [length]="items.data.tv_credits.total_results"
-                             [pageSize]="items.data.tv_credits.length"
+              <mat-paginator [length]="items.data.tv_credits.crew.total_results"
+                             [pageSize]="items.data.tv_credits.crew.length"
                              [pageSizeOptions]=""
                              [pageIndex]="0"
                              (page)= "change_page($event)">

@@ -18,7 +18,15 @@ export class GeneralrearchComponent implements OnInit {
   companies: any;
   collections: any;
   public word: string;
-  constructor(private route: ActivatedRoute, private service: SearchService) { }
+
+  verifier: any[];
+  constructor(private route: ActivatedRoute, private service: SearchService) {
+
+    this.verifier = [];
+    for (let n = 0; n < 20; n++) {
+      this.verifier.push(false);
+    }
+  }
 
   ngOnInit() {
 
@@ -91,6 +99,19 @@ export class GeneralrearchComponent implements OnInit {
       this.search_list = this.service.search('search/collection', this.word_to_give, $event.pageIndex).subscribe((data: any) => this.collections = {
         data: data
       });
+    }
+  }
+  showoverview(value: boolean, index: number) {
+    this.verifier[index] = value;
+    for (let n = 0; n < 20; n++) {
+      if(index !== n)
+      {
+        this.verifier[n] = false;
+      }
+    }}
+  mouseout(){
+    for (let n = 0; n < 20; n++) {
+      this.verifier[n] = false;
     }
   }
 
