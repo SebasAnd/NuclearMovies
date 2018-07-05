@@ -72,7 +72,7 @@
 <mat-grid-list class="mat-grid-list" cols="5" guttersize="5px" rowHeight="3:4.7" *ngIf="actors">
   <mat-grid-tile *ngFor="let i of actors.data ; let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
 
-    <figure class="mat-figure" *ngIf="j < 5" >
+    <figure class="mat-figure"  >
 
 
       <div  *ngIf="verifieractors[j]; then trueB else falseB"> </div>
@@ -136,7 +136,7 @@
     </figure></mat-grid-tile>
 </mat-grid-list>
 <h1> <mat-icon class="icon-title">tv</mat-icon>Tv Shows</h1>
-<mat-grid-list class="mat-grid-list" cols="5" guttersize="5px" rowHeight="3:4.7" >
+<mat-grid-list class="mat-grid-list" cols="5" guttersize="5px" rowHeight="3:4.7" *ngIf="tv">
 <mat-grid-tile *ngFor="let i of tv.data ; let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
 
   <figure class="mat-figure" >
