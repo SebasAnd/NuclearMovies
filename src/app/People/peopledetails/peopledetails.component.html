@@ -74,14 +74,14 @@
                   <div layout = "column" layout-padding>
                     <div flex="40" *ngIf="items.data.birthday">
                       <div layout="row" layout-padding>
-                        <div flex="40">
+                        <div flex="45">
                       <h3><mat-icon class="textwithicon">date_range</mat-icon>{{items.data.birthday}}</h3>
                         </div>
 
-                        <div flex="40" *ngIf="items.data.deathday">
+                        <div flex="45" *ngIf="items.data.deathday">
                           <h3><mat-icon class="textwithicon">date_range</mat-icon>{{items.data.deathday}} </h3>
                         </div>
-                        <div flex="40" *ngIf="items.data.gender">
+                        <div flex="10" *ngIf="items.data.gender">
                           <h3><mat-icon class="textwithicon">person_pin</mat-icon>{{person_gender(items.data.gender)}} </h3>
                         </div>
                       </div>

@@ -9,8 +9,12 @@ import {MovieService} from '../../Services/movie/movie.service';
 export class TopratedshowsComponent implements OnInit {
   topratedshows_list: any;
   items: any;
-
+  verifier: any[];
   constructor(private movieService: MovieService) {
+    this.verifier = [];
+    for (let n = 0; n < 20; n++) {
+      this.verifier.push(false);
+    }
   }
 
   showConfig() {
@@ -29,5 +33,19 @@ export class TopratedshowsComponent implements OnInit {
   ngOnInit() {
     this.showConfig();
 
+  }
+  showoverview(value: boolean, index: number) {
+
+    this.verifier[index] = value;
+    for (let n = 0; n < 20; n++) {
+      if(index !== n)
+      {
+        this.verifier[n] = false;
+      }
+    }}
+  mouseout(){
+    for (let n = 0; n < 20; n++) {
+      this.verifier[n] = false;
+    }
   }
 }

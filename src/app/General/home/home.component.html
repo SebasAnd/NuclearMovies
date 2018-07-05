@@ -1,4 +1,4 @@
-<h1> <mat-icon class="icon-title">movie_filter</mat-icon>Movies</h1>
+<<a routerLink="/popular_movies"><h1> <mat-icon class="icon-title">movie_filter</mat-icon>Movies</h1></a>
 
 <mat-grid-list class="mat-grid-list" cols="5" guttersize="5px" rowHeight="3:4.7" *ngIf="movies">
   <mat-grid-tile *ngFor="let i of movies.data ; let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
@@ -65,7 +65,7 @@
 
     </figure></mat-grid-tile>
 </mat-grid-list>
-<h1> <mat-icon class="icon-title">people</mat-icon>Actors</h1>
+<a routerLink="/popular_people"><h1> <mat-icon class="icon-title">people</mat-icon>Actors</h1></a>
 
 
 
@@ -75,58 +75,16 @@
     <figure class="mat-figure"  >
 
 
-      <div  *ngIf="verifieractors[j]; then trueB else falseB"> </div>
-      <ng-template #trueB>
-        <div *ngIf = 'i.profile_path === null; then trueC else falseC'></div>
 
-
-        <ng-template #trueC>
-          <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
-        </ng-template>
-        <ng-template #falseC>
-          <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}"  >
-        </ng-template>
-
-        <a [routerLink]="['/people_details',i.id]">
-          <div class="top-left" layout = "column" layout-padding (mouseout)="mouseoutactors()">
-            <div flex ="20">
-              <p class="title"><b>{{i.name}}</b></p>
-
-            </div>
-            <div flex ="60">
-              <!--<p>{{(i.biography.length > 350)  ? (i.biography | slice:0:350) + '....' : (i.biography) }}</p>-->
-
-            </div>
-
-
-            <div flex="10"  class="rate" *ngIf="i.popularity > 0">
-
-              <mat-icon class="star_rate">star_rate</mat-icon>{{i.popularity| number: '1.1-1' }}
-
-
-            </div>
-            <div flex="10"  class="rate" *ngIf="i.birthday">
-
-              <mat-icon>date_range</mat-icon>{{i.birthday}}
-
-
-            </div>
-
-
-
-          </div></a>
-      </ng-template>
-      <ng-template #falseB>
 
         <div *ngIf = 'i.profile_path === null; then trueA else falseA'></div>
 
         <ng-template #trueA>
-          <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverviewactors(true,j)" (mouseout)="mouseout()" >
+          <a [routerLink]="['/people_details',i.id]"> <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png"  ></a>
         </ng-template>
         <ng-template #falseA>
-          <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}" (mouseover)="showoverviewactors(true,j)"  (mouseout)="mouseout()">
+          <a [routerLink]="['/people_details',i.id]"><img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}" ></a>
         </ng-template>
-      </ng-template>
 
 
 
@@ -135,14 +93,14 @@
 
     </figure></mat-grid-tile>
 </mat-grid-list>
-<h1> <mat-icon class="icon-title">tv</mat-icon>Tv Shows</h1>
+<a routerLink="/popular_tv_shows"><h1> <mat-icon class="icon-title">tv</mat-icon>Tv Shows</h1></a>
 <mat-grid-list class="mat-grid-list" cols="5" guttersize="5px" rowHeight="3:4.7" *ngIf="tv">
 <mat-grid-tile *ngFor="let i of tv.data ; let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
 
   <figure class="mat-figure" >
 
 
-    <div  *ngIf="verifiertv[j]; then trueB else falseB"> </div>
+    <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
     <ng-template #trueB>
       <div *ngIf = 'i.poster_path === null; then trueC else falseC'></div>
 
@@ -155,7 +113,7 @@
       </ng-template>
 
       <a [routerLink]="['/tvshow_details',i.id]">
-        <div class="top-left" layout = "column" layout-padding (mouseout)="mouseouttv()">
+        <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
           <div flex ="20">
             <p class="title"><b>{{i.name}}</b></p>
 
@@ -171,9 +129,9 @@
 
 
           </div>
-          <div flex="10"  class="rate" *ngIf="i.release_date">
+          <div flex="10"  class="rate" *ngIf="i.first_air_date">
 
-            <mat-icon>date_range</mat-icon>{{i.release_date}}
+            <mat-icon>date_range</mat-icon>{{i.first_air_date}}
 
 
           </div>
@@ -187,10 +145,10 @@
       <div *ngIf = 'i.poster_path === null; then trueA else falseA'></div>
 
       <ng-template #trueA>
-        <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverviewtv(true,j)" (mouseout)="mouseout()" >
+        <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
       </ng-template>
       <ng-template #falseA>
-        <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverviewtv(true,j)"  (mouseout)="mouseout()">
+        <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.poster_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
       </ng-template>
     </ng-template>
 

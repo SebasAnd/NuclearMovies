@@ -1,23 +1,20 @@
 <div *ngIf="items">
   <!---<button mat-button (click)="showConfig()">boton</button>--->
   <!---{{items.data.results | json}}--->
-  <h1>People</h1>
+  <h1> <mat-icon class="icon-title">people</mat-icon> People</h1>
 
-  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="785px">
+  <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowWidth="500px" rowHeight="700px">
     <mat-grid-tile *ngFor="let i of items.data.results"   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host=""
     ><figure class="mat-figure">
-      <mat-card  class="movie mat-card">
-        <div *ngIf = 'i.profile_path === null; then trueA else falseA'></div>
-        <ng-template #trueA>
-          <a [routerLink]="['/people_details',i.id]"> <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png"></a>
-        </ng-template>
-        <ng-template #falseA>
-          <a [routerLink]="['/people_details',i.id]"><img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}"></a>
-        </ng-template>
+      <div *ngIf = 'i.profile_path === null; then trueA else falseA'></div>
+      <ng-template #trueA>
+        <a [routerLink]="['/people_details',i.id]"> <img  style="" class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png"></a>
+      </ng-template>
+      <ng-template #falseA>
+        <a [routerLink]="['/people_details',i.id]"><img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}"></a>
+      </ng-template>
 
-
-      </mat-card>
-      <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.name}}</mat-grid-tile-footer>
+      <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.name}} : {{i.character }}</mat-grid-tile-footer>
     </figure></mat-grid-tile>
   </mat-grid-list>
   <!---{{items.data | json}}

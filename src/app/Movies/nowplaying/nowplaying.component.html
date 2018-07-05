@@ -29,17 +29,17 @@
 
                 </div>
 
-                <div flex ="60">
+                <div flex ="60" *ngIf="i.overview">
                   <p>{{(i.overview.length > 350)  ? (i.overview | slice:0:350) + '....' : (i.overview) }}</p>
 
                 </div>
-                <div flex="10"  class="rate">
+                <div flex="10"  class="rate" *ngIf="i.vote_average">
 
                   <mat-icon class="star_rate">star_rate</mat-icon>{{i.vote_average}}
 
 
                 </div>
-                  <div flex="10"  class="rate">
+                  <div flex="10"  class="rate" *ngIf="i.release_date">
 
                     <mat-icon>date_range</mat-icon>{{i.release_date}}
 
@@ -69,8 +69,6 @@
 
           </figure></mat-grid-tile>
   </mat-grid-list>
-  <!---{{items.data | json}}
-     {{items.data.total_results}}--->
 
 
   <mat-paginator [length]="items.data.total_results"

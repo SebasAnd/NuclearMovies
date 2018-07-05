@@ -1,4 +1,6 @@
-<input type="submit"  class="searchname" type="text"  [(ngModel)]="word" ><button [routerLink]="['/search', word]"  class="search-button" mat-button ><mat-icon>search</mat-icon></button>
-
+<!--<input type="submit"  class="searchname" type="text"  [(ngModel)]="word" ><button [routerLink]="['/search', word]"  class="search-button" mat-button ><mat-icon>search</mat-icon></button>-->
+<td-search-input placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true" [debounce]="500"
+                 (search)="handleSearch($event)" (clear)="searchInputTerm = ''">
+</td-search-input>
 
 

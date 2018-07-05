@@ -18,68 +18,26 @@
             <mat-grid-tile *ngFor="let i of items.data.results ; let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
               <div *ngIf="i.media_type === 'person'">
 
-              <figure class="mat-figure" >
-
-
-                <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
-                <ng-template #trueB>
-                  <div *ngIf = 'i.profile_path === null; then trueC else falseC'></div>
-
-
-                  <ng-template #trueC>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
-                  </ng-template>
-                  <ng-template #falseC>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}"  >
-                  </ng-template>
-
-                  <a [routerLink]="['/people_details',i.id]">
-                    <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
-                      <div flex ="20">
-                        <p class="title"><b>{{i.name}}</b></p>
-
-                      </div>
-
-                      <div flex ="60">
-                        <p>{{(i.biography.length > 350)  ? (i.biography | slice:0:350) + '....' : (i.biography) }}</p>
-
-                      </div>
-                      <div flex="10"  class="rate" *ngIf="i.popularity > 0">
-
-                        <mat-icon class="star_rate">star_rate</mat-icon>{{i.popularity| number: '1.1-1' }}
-
-
-                      </div>
-                      <div flex="10"  class="rate" *ngIf="i.birthday">
-
-                        <mat-icon>date_range</mat-icon>{{i.birthday}}
-
-
-                      </div>
+                <figure class="mat-figure"  >
 
 
 
-                    </div></a>
-                </ng-template>
-                <ng-template #falseB>
 
                   <div *ngIf = 'i.profile_path === null; then trueA else falseA'></div>
 
                   <ng-template #trueA>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
+                    <a [routerLink]="['/people_details',i.id]"> <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png"  ></a>
                   </ng-template>
                   <ng-template #falseA>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
+                    <a [routerLink]="['/people_details',i.id]"><img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}" ></a>
                   </ng-template>
-                </ng-template>
 
 
 
 
-                <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.name}}</mat-grid-tile-footer>
+                  <mat-grid-tile-footer  class="mat-grid-tile-footer"><div class="mat-grid-list-text"></div>{{i.name}}</mat-grid-tile-footer>
 
-
-              </figure>
+                </figure>
               </div>
               <div *ngIf="i.media_type === 'movie'">
 
@@ -119,6 +77,12 @@
                         <div flex="10"  class="rate">
 
                           <mat-icon>date_range</mat-icon>{{i.release_date}}
+
+
+                        </div>
+                        <div flex="10"  class="rate">
+
+                          <mat-icon>local_movies</mat-icon> Movie
 
 
                         </div>
@@ -182,9 +146,15 @@
 
 
                         </div>
-                        <div flex="10"  class="rate" *ngIf="i.release_date">
+                        <div flex="10"  class="rate" *ngIf="i.first_air_date">
 
-                          <mat-icon>date_range</mat-icon>{{i.release_date}}
+                          <mat-icon>date_range</mat-icon>{{i.first_air_date}}
+
+
+                        </div>
+                        <div flex="10"  class="rate">
+
+                          <mat-icon>live_tv</mat-icon> Tv show
 
 
                         </div>
@@ -350,59 +320,18 @@
           <mat-grid-list class="mat-grid-list" cols="4" guttersize="5px" rowHeight="3:4.7" >
             <mat-grid-tile *ngFor="let i of people.data.results ; let j = index "   class="mat-grid-tile" aria-describedby="cdk-describedby-message-75" cdk-describedby-host="">
 
-              <figure class="mat-figure" >
-
-
-                <div  *ngIf="verifier[j]; then trueB else falseB"> </div>
-                <ng-template #trueB>
-                  <div *ngIf = 'i.profile_path === null; then trueC else falseC'></div>
-
-
-                  <ng-template #trueC>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" >
-                  </ng-template>
-                  <ng-template #falseC>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}"  >
-                  </ng-template>
-
-                  <a [routerLink]="['/people_details',i.id]">
-                    <div class="top-left" layout = "column" layout-padding (mouseout)="mouseout()">
-                      <div flex ="20">
-                        <p class="title"><b>{{i.name}}</b></p>
-
-                      </div>
-
-                      <div flex ="60" *ngIf="i.biography">
-                        <p>{{(i.biography.length > 350)  ? (i.biography | slice:0:350) + '....' : (i.biography) }}</p>
-
-                      </div>
-                      <div flex="10"  class="rate" *ngIf="i.popularity > 0">
-
-                        <mat-icon class="star_rate">star_rate</mat-icon>{{i.popularity| number: '1.1-1' }}
-
-
-                      </div>
-                      <div flex="10"  class="rate" *ngIf="i.birthday">
-
-                        <mat-icon>date_range</mat-icon>{{i.birthday}}
-
-
-                      </div>
+              <figure class="mat-figure"  >
 
 
 
-                    </div></a>
+
+                <div *ngIf = 'i.profile_path === null; then trueA else falseA'></div>
+
+                <ng-template #trueA>
+                  <a [routerLink]="['/people_details',i.id]"> <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png"  ></a>
                 </ng-template>
-                <ng-template #falseB>
-
-                  <div *ngIf = 'i.profile_path === null; then trueA else falseA'></div>
-
-                  <ng-template #trueA>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="assets/No_Image/No_image_available.png" (mouseover)="showoverview(true,j)" (mouseout)="mouseout()" >
-                  </ng-template>
-                  <ng-template #falseA>
-                    <img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}" (mouseover)="showoverview(true,j)"  (mouseout)="mouseout()">
-                  </ng-template>
+                <ng-template #falseA>
+                  <a [routerLink]="['/people_details',i.id]"><img  class="mat-card-image" mat-card-image="" tabindex="0" src="https://image.tmdb.org/t/p/w500/{{i.profile_path}}" ></a>
                 </ng-template>
 
 
@@ -480,9 +409,9 @@
 
 
                         </div>
-                        <div flex="10"  class="rate" *ngIf="i.release_date">
+                        <div flex="10"  class="rate" *ngIf="i.first_air_date">
 
-                          <mat-icon>date_range</mat-icon>{{i.release_date}}
+                          <mat-icon>date_range</mat-icon>{{i.first_air_date}}
 
 
                         </div>

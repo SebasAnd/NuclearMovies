@@ -1,9 +1,10 @@
 p {
   display: block;
+  color :green;
   -webkit-margin-before: 1em;
   -webkit-margin-after: 1em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
+  -webkit-margin-start: 1em;
+  -webkit-margin-end: 1px;
 }
 td-navigation-drawer{
   background-color: white;
@@ -83,4 +84,13 @@ app-combinedsearch.menu{
 
 
 
+}
+a{
+
+  color:lightgreen;
+}
+.search{
+
+  position: absolute;
+  right:2vw;
 }

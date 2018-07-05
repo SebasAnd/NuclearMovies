@@ -20,6 +20,7 @@ import {MatMenuModule} from '@angular/material';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SliderModule } from 'angular-image-slider';
+import { CovalentSearchModule } from '@covalent/core';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { SliderModule } from 'angular-image-slider';
     MatMenuModule,
     MatChipsModule,
     MatProgressSpinnerModule,
-    SliderModule
+    SliderModule,
+    CovalentSearchModule
 
   ],
   declarations: [],
@@ -74,7 +76,8 @@ import { SliderModule } from 'angular-image-slider';
     MatMenuModule,
     MatChipsModule,
     MatProgressSpinnerModule,
-    SliderModule
+    SliderModule,
+    CovalentSearchModule
 
   ]
 })
