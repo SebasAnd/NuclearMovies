@@ -19,6 +19,7 @@ import {MatInputModule} from '@angular/material';
 import {MatMenuModule} from '@angular/material';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SliderModule } from 'angular-image-slider';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatMenuModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SliderModule
 
   ],
   declarations: [],
@@ -71,7 +73,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatMenuModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    SliderModule
 
   ]
 })

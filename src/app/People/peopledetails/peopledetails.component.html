@@ -27,7 +27,7 @@
 
             <div class="information" ><h1 class="title">{{items.data.name}}</h1> <div *ngIf="items.data.also_known_as" layout="columns" layout-padding> <div flex="100/items.data.also_known_as.length" *ngFor="let k of items.data.also_known_as"> {{k}}, </div></div>
               <div layout = "row" layout-padding>
-                <div flex ="15" *ngIf="items.data.popularity > 0">
+                <div flex ="15" *ngIf="items.data.popularity > 0.1">
                   <mat-progress-spinner
                     class="vote_average_spinner"
                     [color]="color"

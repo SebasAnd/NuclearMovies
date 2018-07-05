@@ -12,6 +12,7 @@ import {MoviedetailsComponent} from './Movies/moviedetails/moviedetails.componen
 import {PeopledetailsComponent} from './People/peopledetails/peopledetails.component';
 import {TvshowsdetailsComponent} from './Tvshows/tvshowsdetails/tvshowsdetails.component';
 import {GeneralrearchComponent} from './General/generalrearch/generalrearch.component';
+import {HomeComponent} from './General/home/home.component';
 
 const routes: Routes = [
   {path: 'now_playing_movies', component: NowplayingComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'movie_details/:id', component: MoviedetailsComponent},
   {path: 'people_details/:id', component: PeopledetailsComponent},
   {path: 'tvshow_details/:id', component: TvshowsdetailsComponent},
-  {path: 'search/:word', component: GeneralrearchComponent}
+  {path: 'search/:word', component: GeneralrearchComponent},
+  {path: '', component: HomeComponent}
 
 ];
 

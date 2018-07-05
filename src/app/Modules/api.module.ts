@@ -16,6 +16,7 @@ import {TvshowsdetailsComponent} from '../Tvshows/tvshowsdetails/tvshowsdetails.
 import {CombinedsearchComponent} from '../General/combinedsearch/combinedsearch.component';
 import {GeneralrearchComponent} from '../General/generalrearch/generalrearch.component';
 import {Form, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HomeComponent} from '../General/home/home.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import {Form, FormsModule, ReactiveFormsModule} from '@angular/forms';
     TvshowsdetailsComponent,
     GeneralrearchComponent,
     CombinedsearchComponent,
+    HomeComponent
   ],
   exports: [
     NowplayingComponent,
@@ -55,7 +57,8 @@ import {Form, FormsModule, ReactiveFormsModule} from '@angular/forms';
     GeneralrearchComponent,
     CombinedsearchComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HomeComponent
   ],
 })
 export class ApiModule { }
