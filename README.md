@@ -48,7 +48,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - pagination for the lists that contain more that one page 
 - unit testing for a method showoverview in movie details component
-- support for null id in a cast an crew information in tv shows component
+- support for null id in cast and crew data, on tv shows component
 
 
 
