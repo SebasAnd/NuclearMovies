@@ -39,6 +39,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - search of movies
 - search of actors
 - search of tv shows
+- search that combines search of tv shows, movies and actors in one list
+- details of movies
+- details of actors
+- details of tv shows
+
+## Extra content
+
+- pagination for the lists that contain more that one page 
+- unit testing for a method showoverview in movie details component
 
 
 
